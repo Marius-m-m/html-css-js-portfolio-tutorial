@@ -303,6 +303,31 @@ section {
   text-align: center;
 }
 
+/* Ensure project cards align: equal image area, title and buttons aligned */
+.about-containers {
+  display: flex;
+  align-items: stretch;
+}
+.details-container {
+  display: flex;
+  flex-direction: column;
+}
+.details-container .article-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-img {
+  border-radius: 2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.btn-container {
+  margin-top: auto;
+}
+
 .section-container {
   gap: 4rem;
   height: 80%;
@@ -429,4 +454,161 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+/* PROJECT DETAILS MODAL */
+.modal {
+  display: none;
+}
+.modal[aria-hidden="false"] {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: min(90%, 900px);
+  max-height: 85vh;
+  overflow: auto;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.modal-body {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.modal-images {
+  flex: 1 1 260px;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.modal-images img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 8px;
+}
+.modal-text {
+  flex: 2 1 300px;
+}
+
+/* Modal Tabs */
+.modal-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.tab {
+  background: transparent;
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tab.active {
+  background: rgb(53,53,53);
+  color: white;
+  border-color: rgb(53,53,53);
+}
+
+.modal-panel {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.modal-panel.hidden {
+  display: none;
+}
+
+.gallery-images {
+  flex: 1 1 260px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+.gallery-images img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.gallery-text {
+  flex: 2 1 300px;
+}
+
+/* Project page specific layout: larger images and left-column scrolling */
+.project-page .modal-body,
+.project-page .modal-panel {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.project-page .modal-images {
+  flex: 0 0 48%;
+  max-width: 48%;
+  max-height: 75vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.project-page .modal-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.project-page .modal-text {
+  flex: 1 1 48%;
+  padding-left: 0.5rem;
+}
+.project-page .gallery-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+.project-page .gallery-images img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Make the main project image area larger (approx 2x previous) when on project page */
+.project-page .modal-images img:first-child {
+  height: auto;
+  max-width: 520px;
+}
+
+@media (max-width: 700px) {
+  .modal-body {
+    flex-direction: column;
+  }
+  .modal-images img {
+    max-width: 100%;
+  }
 }

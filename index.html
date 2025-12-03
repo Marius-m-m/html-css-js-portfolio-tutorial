@@ -83,8 +83,9 @@
                 Meta Horizon
               </button>
               <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://','_blank')"
+                class="btn btn-color-2 project-btn details-btn"
+                data-project="float"
+                onclick="window.open('./project.html?project=float','_blank')"
               >
                 Details
               </button>
@@ -107,8 +108,9 @@
                 Itch.io
               </button>
               <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://','_blank')"
+                class="btn btn-color-2 project-btn details-btn"
+                data-project="neo-tokyo"
+                onclick="window.open('./project.html?project=neo-tokyo','_blank')"
               >
                 Details
               </button>
@@ -131,8 +133,9 @@
                 Itch.io
               </button>
               <button
-                class="btn btn-color-2 project-btn"
-                onclick="window.open('https://','_blank')"
+                class="btn btn-color-2 project-btn details-btn"
+                data-project="mechavr"
+                onclick="window.open('./project.html?project=mechavr','_blank')"
               >
                 Details
               </button>
@@ -181,5 +184,17 @@
       <p>&#169; 2025 Marius Maucher.</p>
     </footer>
     <script src="script.js"></script>
+    <!-- Modal for project details -->
+    <div id="project-modal" class="modal" aria-hidden="true">
+      <div class="modal-overlay" data-close></div>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Close" data-close>&times;</button>
+        <h2 id="modal-title" class="modal-title">Project Title</h2>
+        <div class="modal-body">
+          <div class="modal-images"></div>
+          <div class="modal-text"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

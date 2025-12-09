@@ -1,45 +1,50 @@
 /* GENERAL */
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box; /* WICHTIG: Verhindert, dass Padding die Breite sprengt */
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    font-family: Arial; /* Deine Schrift bleibt */
+    
+    /* NEU HINZUFÜGEN: */
+    background: linear-gradient(-45deg, #f3f4f6, #e2e8f0, #f8fafc, #edf2f7);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
 }
-
 html {
   scroll-behavior: smooth;
 }
 
 p {
   color: rgb(85, 85, 85);
+  line-height: 1.6; /* Bessere Lesbarkeit */
 }
 
 /* TRANSITION */
-
-a,
-.btn {
+a, .btn {
   transition: all 300ms ease;
 }
 
-/* DESKTOP NAV */
-
-nav,
-.nav-links {
-  display: flex;
-}
-
+/* --- NAVIGATION --- */
 nav {
+  display: flex;
   justify-content: space-around;
   align-items: center;
   height: 17vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .nav-links {
+  display: flex;
   gap: 2rem;
   list-style: none;
   font-size: 1.5rem;
@@ -48,7 +53,6 @@ nav {
 a {
   color: black;
   text-decoration: none;
-  text-decoration-color: white;
 }
 
 a:hover {
@@ -60,16 +64,12 @@ a:hover {
 
 .logo {
   font-size: 2rem;
-}
-
-.logo:hover {
   cursor: default;
 }
 
 /* HAMBURGER MENU */
-
 #hamburger-nav {
-  display: none;
+  display: none; /* Standardmäßig ausblenden */
 }
 
 .hamburger-menu {
@@ -90,7 +90,7 @@ a:hover {
   width: 100%;
   height: 2px;
   background-color: black;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-links {
@@ -101,7 +101,9 @@ a:hover {
   width: fit-content;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .menu-links a {
@@ -110,8 +112,6 @@ a:hover {
   text-align: center;
   font-size: 1.5rem;
   color: black;
-  text-decoration: none;
-  transition: all 0.3 ease-in-out;
 }
 
 .menu-links li {
@@ -134,39 +134,35 @@ a:hover {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
-.hamburger-icon span:first-child {
-  opacity: 1;
-}
-
-.hamburger-icon span:first-child {
-  transform: none;
-}
-
-/* SECTIONS */
-
+/* --- SECTIONS (Allgemeines Layout) --- */
 section {
-  padding-top: 4vh;
-  height: 96vh;
-  margin: 0 10rem;
-  box-sizing: border-box;
-  min-height: fit-content;
+  padding: 3rem 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  min-height: auto;
+  height: fit-content;
 }
 
-.section-container {
-  display: flex;
+.title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* PROFILE SECTION */
+.section__text__p1 {
+  text-align: center;
+}
 
+/* --- PROFILE SECTION --- */
 #profile {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 5rem;
-  height: 80vh;
+  height: fit-content;
+  margin-top: 5vh;
+  margin-bottom: 0rem; /* HIER ÄNDERN: Von 2rem auf 0rem oder 1rem */
 }
 
 .section__pic-container {
@@ -185,18 +181,9 @@ section {
   font-weight: 600;
 }
 
-.section__text__p1 {
-  text-align: center;
-}
-
 .section__text__p2 {
   font-size: 1.75rem;
   margin-bottom: 1rem;
-}
-
-.title {
-  font-size: 3rem;
-  text-align: center;
 }
 
 #socials-container {
@@ -207,149 +194,42 @@ section {
 }
 
 /* ICONS */
-
 .icon {
   cursor: pointer;
   height: 2rem;
 }
 
 /* BUTTONS */
-
 .btn-container {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap; /* Damit Buttons auf Handy untereinander rutschen */
 }
 
 .btn {
   font-weight: 600;
-  transition: all 300ms ease;
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
-}
-
-.btn-color-1,
-.btn-color-2 {
   border: rgb(53, 53, 53) 0.1rem solid;
+  cursor: pointer;
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  cursor: pointer;
-}
-
-.btn-color-1,
-.btn-color-2:hover {
   background: rgb(53, 53, 53);
   color: white;
-}
-
-.btn-color-1:hover {
-  background: rgb(0, 0, 0);
 }
 
 .btn-color-2 {
   background: none;
 }
 
-.btn-color-2:hover {
-  border: rgb(255, 255, 255) 0.1rem solid;
-}
-
-.btn-container {
-  gap: 1rem;
-}
-
-/* ABOUT SECTION */
-
-#about {
+/* --- PROJECTS SECTION --- */
+#projects {
   position: relative;
-}
-
-.about-containers {
-  gap: 2rem;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
-}
-
-.about-details-container {
-  justify-content: center;
-  flex-direction: column;
-}
-
-.about-containers,
-.about-details-container {
-  display: flex;
-}
-
-.about-pic {
-  border-radius: 2rem;
-}
-
-.arrow {
-  position: absolute;
-  right: -5rem;
-  bottom: 2.5rem;
-}
-
-.details-container {
-  padding: 1.5rem;
-  flex: 1;
-  background: white;
-  border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  text-align: center;
-}
-
-/* Ensure project cards align: equal image area, title and buttons aligned */
-.about-containers {
-  display: flex;
-  align-items: stretch;
-}
-.details-container {
-  display: flex;
-  flex-direction: column;
-}
-.details-container .article-container {
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.project-img {
-  border-radius: 2rem;
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* HIER ÄNDERN: Von 'cover' zu 'contain' */
-}
-.btn-container {
-  margin-top: auto;
-}
-
-.section-container {
-  gap: 4rem;
-  height: 80%;
-}
-
-.section__pic-container {
-  height: 400px;
-  width: 400px;
-  margin: auto 0;
-}
-
-/* EXPERIENCE SECTION */
-
-#experience {
-  position: relative;
-}
-
-.experience-sub-title {
-  color: rgb(85, 85, 85);
-  font-weight: 600;
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
+  padding-bottom: 3rem;
 }
 
 .experience-details-container {
@@ -358,71 +238,87 @@ section {
   flex-direction: column;
 }
 
+.about-containers {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  justify-content: center; /* Zentriert die Karten */
+  flex-wrap: wrap; /* Erlaubt Umbruch bei kleinen Screens */
+}
+
+.details-container {
+  padding: 1.5rem;
+  flex: 1;
+  background: white;
+  border-radius: 2rem;
+  border: rgb(163, 163, 163) 0.1rem solid;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 280px; /* Mindestbreite damit sie nicht zu dünn werden */
+  max-width: 400px;
+}
+
 .article-container {
+  height: 200px; /* Feste Höhe für den Bild-Bereich */
   display: flex;
-  text-align: initial;
-  flex-wrap: wrap;
-  flex-direction: row;
-  gap: 2.5rem;
-  justify-content: space-around;
-}
-
-article {
-  display: flex;
-  width: 10rem;
-  justify-content: space-around;
-  gap: 0.5rem;
-}
-
-article .icon {
-  cursor: default;
-}
-
-/* PROJECTS SECTION */
-
-#projects {
-  position: relative;
-}
-
-.color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .project-img {
   border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer; /* <--- DAS HIER IST NEU */
+  transition: transform 0.2s; /* Optional: Kleiner Effekt */
+}
+
+/* Optional: Bild wird beim Drüberfahren minimal größer (sieht gut aus!) */
+.project-img:hover {
+  transform: scale(1.02);
 }
 
 .project-title {
-  margin: 1rem;
+  margin: 1rem 0;
   color: black;
+  font-size: 1.75rem;
+  font-weight: 600;
 }
 
-.project-btn {
-  color: black;
-  border-color: rgb(163, 163, 163);
+/* --- ABOUT ME SECTION (Home) --- */
+#about {
+  padding-bottom: 5rem;
 }
 
-/* CONTACT */
+.about-text-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 0 1rem;
+}
 
+/* --- CONTACT SECTION --- */
 #contact {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  height: 70vh;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
 }
 
 .contact-info-upper-container {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
+  border: rgb(163, 163, 163) 0.1rem solid;
+  background: rgb(250, 250, 250);
   margin: 2rem auto;
   padding: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .contact-info-container {
@@ -437,301 +333,57 @@ article .icon {
   font-size: larger;
 }
 
-.contact-icon {
-  cursor: default;
-}
-
 .email-icon {
   height: 2.5rem;
 }
 
-/* FOOTER SECTION */
-
+/* --- FOOTER --- */
 footer {
   height: 26vh;
   margin: 0 1rem;
+}
+
+footer nav {
+  height: fit-content;
+  margin-bottom: 2rem;
 }
 
 footer p {
   text-align: center;
 }
 
-/* PROJECT DETAILS MODAL */
-.modal {
-  display: none;
-}
-.modal[aria-hidden="false"] {
-  display: block;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-}
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-.modal-content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  width: min(90%, 900px);
-  max-height: 85vh;
-  overflow: auto;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.modal-close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.75rem;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.modal-title {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-.modal-body {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.modal-images {
-  flex: 1 1 260px;
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-.modal-images img {
-  width: 100%;
-  max-width: 260px;
-  border-radius: 8px;
-}
-.modal-text {
-  flex: 2 1 300px;
-}
-
-/* Modal Tabs */
-.modal-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-.tab {
-  background: transparent;
-  border: 1px solid rgba(0,0,0,0.08);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.tab.active {
-  background: rgb(53,53,53);
-  color: white;
-  border-color: rgb(53,53,53);
-}
-
-.modal-panel {
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.modal-panel.hidden {
-  display: none;
-}
-
-/* --- NEUES GALLERY LAYOUT (Bild + Text Paare) --- */
-
-/* Der Container für die gesamte Galerie */
-.project-page .gallery-images {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4rem; /* Großer Abstand zwischen den Bild-Blöcken */
-  width: 100%;
-}
-
-/* Ein einzelner Block (Bild + Text darunter) */
-.gallery-item {
-  width: 100%;
-  max-width: 900px; /* Gleiche Breite wie oben */
-  display: flex;
-  flex-direction: column;
-}
-
-/* Das Bild im Galerie-Block */
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  margin-bottom: 1rem; /* Abstand zum Text darunter */
-}
-
-/* Der Text unter dem Bild */
-.gallery-item p {
-  font-size: 1rem;
-  color: rgb(85, 85, 85);
-  line-height: 1.6;
-  background: #f9f9f9; /* Optional: Leichter Hintergrund für den Text */
-  padding: 1.5rem;       /* Optional: Etwas Innenabstand */
-  border-radius: 8px;    /* Optional: Abgerundete Ecken */
-  border-left: 4px solid rgb(53, 53, 53); /* Optional: Ein schicker Akzent-Strich links */
-}
-
-/* Make the main project image area larger (approx 2x previous) when on project page */
-.project-page .modal-images img:first-child {
-  height: auto;
-  max-width: 520px;
-}
-
-/* Project trailer section */
-.project-trailer-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0 4rem 0;
-  min-height: 550px;
-}
-
-.trailer-container {
-  width: 100%;
-  max-width: 800px;
-}
-
-.trailer-container iframe {
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 700px) {
-  .project-trailer-section {
-    margin: 1rem 0 2rem 0;
-    min-height: auto;
-  }
-  .trailer-container iframe {
-    height: 300px !important;
-  }
-}
-
-@media (max-width: 700px) {
-  .modal-body {
-    flex-direction: column;
-  }
-  .modal-images img {
-    max-width: 100%;
-  }
-}
 /* =========================================
-   PROJECT PAGE SPECIFIC LAYOUT (CLEAN LOOK)
+   PROJECT PAGE (project.html) SPECIFIC STYLES
    ========================================= */
 
-/* Haupt-Container für den Inhalt zentrieren */
-.project-page .modal-body {
-  display: block; /* Kein Flexbox mehr für den Haupt-Wrapper */
-  width: 100%;
-  max-width: 900px; /* Begrenzt die Breite, damit es lesbar bleibt */
-  margin: 0 auto;   /* Zentriert alles horizontal */
+.project-page {
+  padding: 2rem;
 }
 
-/* Das Panel selbst: Alles untereinander anordnen */
-.project-page .modal-panel {
-  display: flex;
-  flex-direction: column-reverse; /* WICHTIG: Text nach oben, Bilder nach unten */
-  gap: 3rem; /* Abstand zwischen Text und Bildern */
-  align-items: center; /* Zentriert die Inhalte */
-}
-
-/* TEXT-BEREICH */
-.project-page .modal-text {
-  width: 100%;
-  max-width: 800px; /* Text nicht zu breit machen (besser lesbar) */
-  text-align: left; /* Text linksbündig (besser lesbar) oder 'center' */
-  line-height: 1.8; /* Mehr Luft zwischen den Zeilen */
-  font-size: 1.1rem;
-  padding: 0 1rem;
-}
-
-/* BILDER-BEREICH */
-.project-page .modal-images {
-  width: 100%;
-  max-width: 100%; /* Darf die volle Breite des Containers nutzen */
-  display: grid;
-  /* Erstellt ein automatisches Raster: Bilder sind mind. 300px breit */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 1.5rem;
-  overflow: visible; /* Scrollbalken weg, da wir die ganze Seite scrollen */
-  max-height: none;  /* Höhenbegrenzung aufheben */
-}
-
-/* Einzelne Bilder Styling */
-.project-page .modal-images img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 20px 10px rgba(0,0,0,0.1); /* Leichter Schatten für "Clean"-Look */
-  transition: transform 0.3s ease;
-}
-
-/* Hover-Effekt für Bilder (optional) */
-.project-page .modal-images img:hover {
-  transform: scale(1.02);
-}
-
-/* Das erste Bild nicht mehr riesig machen, da wir jetzt ein Grid haben */
-.project-page .modal-images img:first-child {
-  max-width: 100%; 
-}
-
-/* TRAILER BEREICH (Optimierung) */
-.project-trailer-section {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto 3rem auto; /* Unten 3rem Abstand zum Text */
-  max-width: 1000px; /* Trailer darf etwas breiter sein als der Text */
-  padding: 0 1rem;
-}
-
-.trailer-container iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9; /* Erzwingt 16:9 Format modern */
-  height: auto !important; /* Überschreibt alte Höhen */
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-/* --- ZUSATZ FÜR PROJECT DETAILS LAYOUT (Wie im Screenshot) --- */
-
-/* Container für Scope und Role nebeneinander */
+/* Layout für Scope und Role (2 Spalten) */
 .project-meta-grid {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
   margin-bottom: 2rem;
   text-align: left;
-  border-bottom: 1px solid #ccc; /* Optional: Trennlinie wie im Screenshot */
+  border-bottom: 1px solid #ccc;
   padding-bottom: 2rem;
 }
 
 .meta-column {
-  flex: 1; /* Beide Spalten gleich groß */
+  flex: 1;
 }
 
 .meta-column h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
-  color: black; /* Oder weiß, falls du Darkmode willst */
+  color: black;
 }
 
 .meta-column ul {
-  list-style-type: none; /* Keine Punkte */
+  list-style-type: none;
   padding: 0;
 }
 
@@ -740,7 +392,7 @@ footer p {
   color: rgb(85, 85, 85);
 }
 
-/* Der Kontext-Text Bereich */
+/* Context Text Bereich */
 .project-context-section {
   text-align: left;
   margin-bottom: 3rem;
@@ -752,166 +404,190 @@ footer p {
   font-weight: 600;
 }
 
-/* Bilder Styling überschreiben für Project Page */
-.project-page .modal-images {
-  /* Wir wollen die Bilder untereinander, aber zentriert */
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  gap: 2rem;
+/* Haupt-Container der Details Page */
+.modal-body {
   width: 100%;
-  max-width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.project-page .modal-images img {
+.modal-panel {
+  display: flex;
+  flex-direction: column-reverse; /* Text oben, Bilder unten */
+  gap: 3rem;
+}
+
+/* Bilder im Overview Tab */
+.modal-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   width: 100%;
-  max-width: 900px; /* Maximale Breite wie im Screenshot */
+}
+
+.modal-images img {
+  width: 100%;
+  max-width: 900px;
   height: auto;
   object-fit: contain;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Schöner Schatten */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
   border-radius: 8px;
 }
 
-/* Mobile Anpassung: Auf Handys Spalten untereinander */
+/* GALLERY TAB (Bild + Text Paare) */
+.gallery-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.gallery-item {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  margin-bottom: 1rem;
+}
+
+.gallery-item p {
+  font-size: 1rem;
+  color: rgb(85, 85, 85);
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid rgb(53, 53, 53);
+}
+
+/* Trailer Section */
+.project-trailer-section {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 3rem auto;
+  max-width: 1000px;
+  padding: 0 1rem;
+}
+
+.trailer-container {
+  width: 100%;
+}
+
+.trailer-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* --- MOBILE & RESPONSIVE ANPASSUNGEN --- */
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+  #hamburger-nav {
+    display: flex;
+  }
+  section, #profile, #contact {
+    padding: 3rem 5%;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .project-meta-grid {
     flex-direction: column;
+    gap: 1rem;
+  }
+  #profile {
+    flex-direction: column;
+    gap: 2rem;
+    height: auto;
+  }
+  .section__pic-container {
+    width: 250px;
+    height: 250px;
+  }
+  .title {
+    font-size: 2.5rem;
   }
 }
-/* --- ABOUT SECTION STYLING --- */
-
-/* Zentriert den Text und macht ihn nicht zu breit */
-.about-text-container {
-  max-width: 800px; /* Maximale Breite wie bei den Projekt-Details */
-  margin: 2rem auto; /* Abstand oben/unten und mittig zentriert */
-  text-align: center; /* Oder 'justify' oder 'left', wie du magst */
-  line-height: 1.8;   /* Macht den Text luftiger und lesbarer */
-  font-size: 1.1rem;
-  padding: 0 1rem;    /* Abstand zum Rand auf kleinen Handys */
-}
-/* --- FIX FÜR ABOUT SECTION HÖHE --- */
-#about {
-  height: fit-content;  /* Die Sektion schrumpft auf die Textgröße zusammen */
-  min-height: auto;     /* Überschreibt Standard-Mindesthöhen */
-  padding-bottom: 6rem; /* Platz unten lassen, damit der Pfeil nicht am Rand klebt */
-  margin-bottom: 0;     /* Entfernt unnötigen Außenabstand */
-}
-/* --- LAYOUT FIX: ZENTRIERUNG BEI ZOOM/GROSSEN SCREENS --- */
-
-/* 1. Die Navigation begrenzen und zentrieren */
-nav {
-  max-width: 1400px; /* Die Leiste wird nicht breiter als das */
-  margin: 0 auto;    /* Zentriert das Element horizontal */
-  width: 100%;       /* Füllt den Platz bis zum Limit */
-  padding: 0 2rem;   /* Kleiner Sicherheitsabstand links/rechts */
-  box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7); /* Halb-transparentes Weiß */
+    backdrop-filter: blur(12px);          /* Der Weichzeichner-Effekt */
+    -webkit-backdrop-filter: blur(12px);  /* Für Safari */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Sehr sanfter Schatten */
+    transition: transform 0.3s ease;
 }
 
-/* 2. Alle Sektionen (Profile, Projects, etc.) begrenzen */
-section {
-  max-width: 1200px; /* Der Inhalt bleibt kompakt zusammen */
-  margin: 0 auto !important; /* 'auto' zentriert. !important überschreibt die alten '10rem' */
-  width: 100%;
-  padding: 4vh 2rem; /* Innenabstand, damit Text nicht am Rand klebt */
-  box-sizing: border-box;
+/* Kleiner Hover-Effekt für die Karte selbst */
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+.hero-title {
+    font-size: 3.5rem; /* Groß! */
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 1rem;
+    
+    /* Der Text-Verlauf */
+    background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.btn-wow {
+    background: #111; /* Fast Schwarz für hohen Kontrast */
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px; /* Pill-Shape wirkt moderner */
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* 3. Footer Inhalt zentrieren */
-footer nav {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-/* ==============================================
-   FIX FÜR ZU GROSSE ABSTÄNDE (CLEANER LOOK)
-   ============================================== */
-
-/* 1. ALLE Sektionen: Riesige feste Höhen entfernen */
-section, #profile, #contact {
-  /* 'fit-content' bedeutet: Die Box ist nur so hoch wie ihr Inhalt */
-  height: fit-content !important;
-  min-height: auto !important;
-  /* Einheitlicher Innenabstand: Oben/Unten 4rem, Links/Rechts wie vorher */
-  padding: 4rem 10rem !important;
-  box-sizing: border-box;
+.btn-wow:hover {
+    transform: translateY(-3px) scale(1.02); /* Hebt sich und wird minimal größer */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2); /* Schatten wird weicher und weiter */
+    background: #000;
 }
 
-/* 2. SPEZIELL PROFILE -> PROJECTS Abstand */
-#profile {
-  display: flex;
-  /* Inhalt oben ausrichten, nicht mehr in der Mitte */
-  align-items: flex-start !important;
-  justify-content: center;
-  gap: 5rem;
-  /* Etwas Abstand vom oberen Bildschirmrand */
-  margin-top: 8vh;
-  /* WICHTIG: Das ist der Abstand von den Icons zu "Projects" */
-  padding-bottom: 2rem !important;
+.btn-wow:active {
+    transform: translateY(-1px); /* Klickeffekt */
+}
+.btn-wow {
+    background: #111; /* Fast Schwarz für hohen Kontrast */
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px; /* Pill-Shape wirkt moderner */
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* Den Text-Block im Profil auch nach oben schieben */
-#profile .section__text {
-  align-self: flex-start !important;
+.btn-wow:hover {
+    transform: translateY(-3px) scale(1.02); /* Hebt sich und wird minimal größer */
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2); /* Schatten wird weicher und weiter */
+    background: #000;
 }
 
-/* 3. SPEZIELL ABOUT -> CONTACT Abstand */
-#about {
-  /* Nur noch ein kleiner Abstand unten, damit der Pfeil Platz hat */
-  padding-bottom: 3rem !important;
-}
-
-/* 4. SPEZIELL CONTACT SEKTION */
-#contact {
-  /* Inhalt nicht mehr vertikal zentrieren */
-  justify-content: flex-start !important;
-  /* Kleiner Abstand nach oben zum "About" Bereich */
-  padding-top: 2rem !important;
-  /* Kleiner Abstand nach unten zum Footer */
-  padding-bottom: 4rem !important;
-}
-
-/* MOBILE ANPASSUNG (Damit die Seitenabstände auf Handys nicht zu groß sind) */
-@media screen and (max-width: 1200px) {
-  section, #profile, #contact {
-    padding: 4rem 5% !important; /* Links/Rechts auf 5% reduzieren */
-  }
-}
-/* =======================================================
-   REPARATUR: ALLES ZENTRIEREN & ABSTÄNDE VERKLEINERN
-   ======================================================= */
-
-/* 1. SEITEN-LAYOUT: Abstände normalisieren */
-section, #profile, #contact, #about {
-  /* Seitenränder verkleinern, da 'max-width' das Layout schon begrenzt */
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
-  
-  /* Abstände oben/unten deutlich verkleinern für weniger "White Space" */
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
-}
-
-/* 2. PROFIL: Bild und Text wieder vertikal mittig zueinander */
-#profile {
-  align-items: center !important; /* Repariert das "Verschobene" beim Text */
-  padding-bottom: 1rem !important; /* Noch weniger Abstand nach unten zu "Projects" */
-}
-
-/* 3. PFEILE: Exakt in die Mitte setzen */
-.arrow {
-  position: absolute;
-  right: auto;             /* Alte Regel löschen */
-  left: 50%;               /* In die Mitte schieben */
-  transform: translateX(-50%); /* Exakt zentrieren */
-  bottom: 1rem;            /* Abstand vom unteren Rand */
-}
-
-/* 4. ABOUT SECTION: Sicherstellen, dass der Pfeil Platz hat */
-#about {
-  position: relative; /* Wichtig für den Pfeil */
-  padding-bottom: 5rem !important; /* Extra Platz unten nur für den Pfeil */
-}
-
-/* 5. CONTACT: Weniger Platz oben */
-#contact {
-  padding-top: 1rem !important;
+.btn-wow:active {
+    transform: translateY(-1px); /* Klickeffekt */
 }

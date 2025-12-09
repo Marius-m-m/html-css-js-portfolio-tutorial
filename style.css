@@ -641,3 +641,80 @@ footer p {
     max-width: 100%;
   }
 }
+/* =========================================
+   PROJECT PAGE SPECIFIC LAYOUT (CLEAN LOOK)
+   ========================================= */
+
+/* Haupt-Container für den Inhalt zentrieren */
+.project-page .modal-body {
+  display: block; /* Kein Flexbox mehr für den Haupt-Wrapper */
+  width: 100%;
+  max-width: 900px; /* Begrenzt die Breite, damit es lesbar bleibt */
+  margin: 0 auto;   /* Zentriert alles horizontal */
+}
+
+/* Das Panel selbst: Alles untereinander anordnen */
+.project-page .modal-panel {
+  display: flex;
+  flex-direction: column-reverse; /* WICHTIG: Text nach oben, Bilder nach unten */
+  gap: 3rem; /* Abstand zwischen Text und Bildern */
+  align-items: center; /* Zentriert die Inhalte */
+}
+
+/* TEXT-BEREICH */
+.project-page .modal-text {
+  width: 100%;
+  max-width: 800px; /* Text nicht zu breit machen (besser lesbar) */
+  text-align: left; /* Text linksbündig (besser lesbar) oder 'center' */
+  line-height: 1.8; /* Mehr Luft zwischen den Zeilen */
+  font-size: 1.1rem;
+  padding: 0 1rem;
+}
+
+/* BILDER-BEREICH */
+.project-page .modal-images {
+  width: 100%;
+  max-width: 100%; /* Darf die volle Breite des Containers nutzen */
+  display: grid;
+  /* Erstellt ein automatisches Raster: Bilder sind mind. 300px breit */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 1.5rem;
+  overflow: visible; /* Scrollbalken weg, da wir die ganze Seite scrollen */
+  max-height: none;  /* Höhenbegrenzung aufheben */
+}
+
+/* Einzelne Bilder Styling */
+.project-page .modal-images img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 10px rgba(0,0,0,0.1); /* Leichter Schatten für "Clean"-Look */
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt für Bilder (optional) */
+.project-page .modal-images img:hover {
+  transform: scale(1.02);
+}
+
+/* Das erste Bild nicht mehr riesig machen, da wir jetzt ein Grid haben */
+.project-page .modal-images img:first-child {
+  max-width: 100%; 
+}
+
+/* TRAILER BEREICH (Optimierung) */
+.project-trailer-section {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 3rem auto; /* Unten 3rem Abstand zum Text */
+  max-width: 1000px; /* Trailer darf etwas breiter sein als der Text */
+  padding: 0 1rem;
+}
+
+.trailer-container iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Erzwingt 16:9 Format modern */
+  height: auto !important; /* Überschreibt alte Höhen */
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}

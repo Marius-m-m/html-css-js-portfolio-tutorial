@@ -90,7 +90,6 @@ function populateProjectPage(id) {
     img.style.width = '100%';
     img.style.borderRadius = '8px';
     // make the primary (first) image larger
-    if (i === 0) img.style.maxWidth = '520px';
     imagesEl.appendChild(img);
   });
   textEl.innerHTML = data.text || '';

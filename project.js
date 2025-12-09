@@ -92,9 +92,9 @@ const projectDataPage = {
     ]
   },
 
-  "mechavr": {
-    title: "MechaVR",
-    trailerUrl: "https://www.youtube.com/watch?v=q4AvDntjlUA",
+  "Mercury": {
+    title: "Mercury",
+    trailerUrl: "https://www.youtube.com/watch?v=MaNCLFus59I",
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -116,7 +116,7 @@ const projectDataPage = {
       </div>
       <div class="project-context-section">
         <h3>The Context</h3>
-        <p>Placeholder text for MechaVR overview.</p>
+        <p>Placeholder text for Mercury overview.</p>
       </div>
     `,
     images: ["./assets/project-3.png"],

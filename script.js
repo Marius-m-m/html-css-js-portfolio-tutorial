@@ -21,12 +21,12 @@ const projectData = {
     galleryImages: ["./assets/project-2.png","./assets/project-2.png","./assets/project-2.png"],
     galleryText: `<p>Gallery for NEO TOKYO. Use this area to explain level design, assets, or development screenshots.</p>`
   },
-  "mechavr": {
-    title: "MechaVR",
-    text: `<p>MechaVR is a VR mech experience. Describe features, your contributions, and any media or downloads.</p>`,
+  "Mercury": {
+    title: "Mercury",
+    text: `<p>Mercury is a VR mech experience. Describe features, your contributions, and any media or downloads.</p>`,
     images: ["./assets/project-3.png"],
     galleryImages: ["./assets/project-3.png","./assets/project-3.png","./assets/project-3.png"],
-    galleryText: `<p>MechaVR gallery: large screenshots, control diagrams, and developer commentary belong here.</p>`
+    galleryText: `<p>Mercury gallery: large screenshots, control diagrams, and developer commentary belong here.</p>`
   }
 };
 

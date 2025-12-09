@@ -322,7 +322,7 @@ section {
   border-radius: 2rem;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* HIER ÄNDERN: Von 'cover' zu 'contain' */
 }
 .btn-container {
   margin-top: auto;
@@ -777,4 +777,141 @@ footer p {
   .project-meta-grid {
     flex-direction: column;
   }
+}
+/* --- ABOUT SECTION STYLING --- */
+
+/* Zentriert den Text und macht ihn nicht zu breit */
+.about-text-container {
+  max-width: 800px; /* Maximale Breite wie bei den Projekt-Details */
+  margin: 2rem auto; /* Abstand oben/unten und mittig zentriert */
+  text-align: center; /* Oder 'justify' oder 'left', wie du magst */
+  line-height: 1.8;   /* Macht den Text luftiger und lesbarer */
+  font-size: 1.1rem;
+  padding: 0 1rem;    /* Abstand zum Rand auf kleinen Handys */
+}
+/* --- FIX FÜR ABOUT SECTION HÖHE --- */
+#about {
+  height: fit-content;  /* Die Sektion schrumpft auf die Textgröße zusammen */
+  min-height: auto;     /* Überschreibt Standard-Mindesthöhen */
+  padding-bottom: 6rem; /* Platz unten lassen, damit der Pfeil nicht am Rand klebt */
+  margin-bottom: 0;     /* Entfernt unnötigen Außenabstand */
+}
+/* --- LAYOUT FIX: ZENTRIERUNG BEI ZOOM/GROSSEN SCREENS --- */
+
+/* 1. Die Navigation begrenzen und zentrieren */
+nav {
+  max-width: 1400px; /* Die Leiste wird nicht breiter als das */
+  margin: 0 auto;    /* Zentriert das Element horizontal */
+  width: 100%;       /* Füllt den Platz bis zum Limit */
+  padding: 0 2rem;   /* Kleiner Sicherheitsabstand links/rechts */
+  box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
+}
+
+/* 2. Alle Sektionen (Profile, Projects, etc.) begrenzen */
+section {
+  max-width: 1200px; /* Der Inhalt bleibt kompakt zusammen */
+  margin: 0 auto !important; /* 'auto' zentriert. !important überschreibt die alten '10rem' */
+  width: 100%;
+  padding: 4vh 2rem; /* Innenabstand, damit Text nicht am Rand klebt */
+  box-sizing: border-box;
+}
+
+/* 3. Footer Inhalt zentrieren */
+footer nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* ==============================================
+   FIX FÜR ZU GROSSE ABSTÄNDE (CLEANER LOOK)
+   ============================================== */
+
+/* 1. ALLE Sektionen: Riesige feste Höhen entfernen */
+section, #profile, #contact {
+  /* 'fit-content' bedeutet: Die Box ist nur so hoch wie ihr Inhalt */
+  height: fit-content !important;
+  min-height: auto !important;
+  /* Einheitlicher Innenabstand: Oben/Unten 4rem, Links/Rechts wie vorher */
+  padding: 4rem 10rem !important;
+  box-sizing: border-box;
+}
+
+/* 2. SPEZIELL PROFILE -> PROJECTS Abstand */
+#profile {
+  display: flex;
+  /* Inhalt oben ausrichten, nicht mehr in der Mitte */
+  align-items: flex-start !important;
+  justify-content: center;
+  gap: 5rem;
+  /* Etwas Abstand vom oberen Bildschirmrand */
+  margin-top: 8vh;
+  /* WICHTIG: Das ist der Abstand von den Icons zu "Projects" */
+  padding-bottom: 2rem !important;
+}
+
+/* Den Text-Block im Profil auch nach oben schieben */
+#profile .section__text {
+  align-self: flex-start !important;
+}
+
+/* 3. SPEZIELL ABOUT -> CONTACT Abstand */
+#about {
+  /* Nur noch ein kleiner Abstand unten, damit der Pfeil Platz hat */
+  padding-bottom: 3rem !important;
+}
+
+/* 4. SPEZIELL CONTACT SEKTION */
+#contact {
+  /* Inhalt nicht mehr vertikal zentrieren */
+  justify-content: flex-start !important;
+  /* Kleiner Abstand nach oben zum "About" Bereich */
+  padding-top: 2rem !important;
+  /* Kleiner Abstand nach unten zum Footer */
+  padding-bottom: 4rem !important;
+}
+
+/* MOBILE ANPASSUNG (Damit die Seitenabstände auf Handys nicht zu groß sind) */
+@media screen and (max-width: 1200px) {
+  section, #profile, #contact {
+    padding: 4rem 5% !important; /* Links/Rechts auf 5% reduzieren */
+  }
+}
+/* =======================================================
+   REPARATUR: ALLES ZENTRIEREN & ABSTÄNDE VERKLEINERN
+   ======================================================= */
+
+/* 1. SEITEN-LAYOUT: Abstände normalisieren */
+section, #profile, #contact, #about {
+  /* Seitenränder verkleinern, da 'max-width' das Layout schon begrenzt */
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
+  
+  /* Abstände oben/unten deutlich verkleinern für weniger "White Space" */
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+/* 2. PROFIL: Bild und Text wieder vertikal mittig zueinander */
+#profile {
+  align-items: center !important; /* Repariert das "Verschobene" beim Text */
+  padding-bottom: 1rem !important; /* Noch weniger Abstand nach unten zu "Projects" */
+}
+
+/* 3. PFEILE: Exakt in die Mitte setzen */
+.arrow {
+  position: absolute;
+  right: auto;             /* Alte Regel löschen */
+  left: 50%;               /* In die Mitte schieben */
+  transform: translateX(-50%); /* Exakt zentrieren */
+  bottom: 1rem;            /* Abstand vom unteren Rand */
+}
+
+/* 4. ABOUT SECTION: Sicherstellen, dass der Pfeil Platz hat */
+#about {
+  position: relative; /* Wichtig für den Pfeil */
+  padding-bottom: 5rem !important; /* Extra Platz unten nur für den Pfeil */
+}
+
+/* 5. CONTACT: Weniger Platz oben */
+#contact {
+  padding-top: 1rem !important;
 }

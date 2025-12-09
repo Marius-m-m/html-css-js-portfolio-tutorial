@@ -14,6 +14,7 @@
       <div>
         <ul class="nav-links">
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#AboutMe">About Me</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -28,13 +29,14 @@
         </div>
         <div class="menu-links">
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#AboutMe" onclick="toggleMenu()">About Me</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
         </div>
       </div>
     </nav>
     <section id="profile">
       <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
+        <p class="section__text__p1">Hi, I'm</p>
         <h1 class="title">Marius Maucher</h1>
         <p class="section__text__p2">Game Programmer</p>
         <div class="btn-container">
@@ -134,21 +136,31 @@
               </button>
               <button
                 class="btn btn-color-2 project-btn details-btn"
-                data-project="mechavr"
-                onclick="window.open('./project.html?project=mechavr','_blank')"
+                data-project="Mercury"
+                onclick="window.open('./project.html?project=Mercury','_blank')"
               >
                 Details
               </button>
             </div>
           </div>
         </div>
+<section id="#AboutMe">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      
+      <div class="about-text-container">
+        <p>
+          Hier kommt dein Text über dich hin. Schreib darüber, was dich motiviert,
+          welche Tools du liebst oder was dein Hintergrund ist.
+          Da du "nur Text" wolltest, ist das hier zentriert und gut lesbar.
+        </p>
+        <br> <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
+    </section>
     </section>
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
@@ -177,6 +189,7 @@
         <div class="nav-links-container">
           <ul class="nav-links">
             <li><a href="#projects">Projects</a></li>
+            <li><a href="#AboutMe">About Me</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>

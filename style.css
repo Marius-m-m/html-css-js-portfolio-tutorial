@@ -539,3 +539,154 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem; /* Hält etwas Abstand nach oben beim Springen */
 }
+/* Tech Stack Slider - Updated for 10 Icons */
+#tech-stack {
+    padding: 3rem 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 2rem;
+}
+
+.slider {
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slide-track {
+    display: flex;
+    /* RECHNUNG: 150px Breite * 20 Icons (10 Original + 10 Kopie) */
+    width: calc(150px * 20); 
+    animation: scroll 40s linear infinite; /* Etwas langsamer, da mehr Icons */
+}
+
+.slide {
+    height: 80px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.slide img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    
+    /* Clean Look: Grayscale */
+    filter: grayscale(100%) opacity(0.7); 
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Effekt: Farbe kommt zurück */
+.slide img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    /* Wir schieben um die Hälfte der Breite (10 Icons * 150px) nach links */
+    100% { transform: translateX(calc(-150px * 10)); } 
+}
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    /* Ein schöner Verlauf passend zu deinem Design */
+    background: linear-gradient(to right, #3b82f6, #8b5cf6);
+    z-index: 10001; /* Über der Navigation */
+    transition: width 0.1s;
+}
+/* GLITCH EFFEKT */
+.glitch-hover {
+    position: relative;
+    display: inline-block;
+}
+
+/* Die Kopien des Textes, die wir verzerren */
+.glitch-hover::before,
+.glitch-hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f3f4f6; /* Muss deine Hintergrundfarbe haben, damit es "ausschneidet" */
+    overflow: hidden;
+    opacity: 0; /* Normalerweise unsichtbar */
+    transition: opacity 0.1s;
+}
+
+/* Hover-Zustand: Sichtbar machen & animieren */
+.glitch-hover:hover::before {
+    left: 2px;
+    text-shadow: -1px 0 red;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-1 1s infinite linear alternate-reverse;
+    opacity: 1;
+}
+
+.glitch-hover:hover::after {
+    left: -2px;
+    text-shadow: -1px 0 blue;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim-2 1s infinite linear alternate-reverse;
+    opacity: 1;
+}
+
+/* Die wilden Bewegungen */
+@keyframes glitch-anim-1 {
+    0% { clip: rect(30px, 9999px, 10px, 0); }
+    20% { clip: rect(70px, 9999px, 90px, 0); }
+    40% { clip: rect(10px, 9999px, 50px, 0); }
+    60% { clip: rect(40px, 9999px, 80px, 0); }
+    80% { clip: rect(80px, 9999px, 20px, 0); }
+    100% { clip: rect(50px, 9999px, 60px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(10px, 9999px, 80px, 0); }
+    20% { clip: rect(80px, 9999px, 10px, 0); }
+    40% { clip: rect(40px, 9999px, 50px, 0); }
+    60% { clip: rect(20px, 9999px, 90px, 0); }
+    80% { clip: rect(90px, 9999px, 30px, 0); }
+    100% { clip: rect(60px, 9999px, 40px, 0); }
+}
+/* --- CUSTOM SCROLLBAR (Chrome, Edge, Safari) --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05); /* Fast unsichtbare Spur */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #333, #555); /* Dunkler Farbverlauf */
+    border-radius: 5px;
+    border: 2px solid transparent; /* Macht ihn optisch schlanker */
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #3b82f6, #1d4ed8); /* Wird Blau beim Drüberfahren */
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+/* --- TEXT SELECTION COLOR --- */
+::selection {
+    background: #3b82f6; /* Dein Gaming-Blau */
+    color: white;
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Leichter Glow */
+}

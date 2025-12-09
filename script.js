@@ -45,3 +45,21 @@ function reveal() {
 }
 window.addEventListener("scroll", reveal);
 reveal();
+
+// --- SCROLL PROGRESS BAR ---
+window.addEventListener("scroll", () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (scrollTop / scrollHeight) * 100;
+    
+    document.getElementById("scroll-progress").style.width = scrolled + "%";
+});
+// --- 3D TILT EFFECT FÜR KARTEN ---
+// Wir wenden es auf deine Projekt-Container an
+VanillaTilt.init(document.querySelectorAll(".details-container"), {
+    max: 10,           // Max Neigung (weniger ist edler)
+    speed: 400,        // Geschwindigkeit der Animation
+    glare: true,       // Fügt einen Lichtreflex hinzu (wie echtes Glas!)
+    "max-glare": 0.3,  // Wie stark das Licht spiegelt
+    scale: 1.02        // Leichtes Zoomen
+});

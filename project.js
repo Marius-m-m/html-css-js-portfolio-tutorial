@@ -235,3 +235,16 @@ document.addEventListener('DOMContentLoaded', () => {
   populateProjectPage(id);
   setupTabs();
 });
+
+/* --- LOGO KLICK-LOGIK (Tab schließen oder zur Startseite) --- */
+
+document.getElementById('home-logo').addEventListener('click', function() {
+  // Prüfen, ob diese Seite von einer anderen Seite geöffnet wurde (window.opener existiert)
+  // UND ob diese Eltern-Seite noch offen ist (!window.opener.closed)
+  if (window.opener && !window.opener.closed) {
+    window.close(); // Tab schließen
+  } else {
+    // Falls kein Eltern-Tab da ist (oder User den Link direkt geöffnet hat)
+    window.location.href = 'index.html'; 
+  }
+});

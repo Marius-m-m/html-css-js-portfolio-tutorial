@@ -2,6 +2,7 @@
 const projectDataPage = {
   "float": {
     title: "FLOAT",
+    trailerUrl: "https://www.youtube.com/watch?v=q4AvDntjlUA",
     text: `<p>FLOAT is a mixed-reality experience that blends virtual and physical interactions. I worked on the interaction system, performance optimization, and shader work to create smooth transitions between virtual objects and the physical environment.</p>
            <p>Technical highlights: built with Unity, custom rendering pipeline tweaks, and spatial mapping integrations. Below you can see several screenshots and build notes.</p>`,
     images: ["./assets/project-1.png"],
@@ -17,6 +18,7 @@ const projectDataPage = {
   },
   "neo-tokyo": {
     title: "NEO TOKYO",
+    trailerUrl: "https://www.youtube.com/watch?v=Vg8SspmbAuc",
     text: `<p>NEO TOKYO is a fast-paced VR game with neon aesthetics. I implemented core gameplay mechanics, input handling for motion controllers, and a custom audio-reactive environment.</p>
            <p>Design notes: focus on short-session gameplay and strong visual feedback. Below are development screenshots and notes on asset pipelines.</p>`,
     images: ["./assets/project-2.png"],
@@ -31,14 +33,14 @@ const projectDataPage = {
   },
   "mechavr": {
     title: "MechaVR",
+    trailerUrl: "https://www.youtube.com/watch?v=q4AvDntjlUA",
     text: `<p>MechaVR is a VR mech experience. I worked on vehicle control systems, haptics integration, and multiplayer syncing for durable mech battles.</p>
            <p>Notes: complex input mapping, weapon systems, and procedural animation blending were key challenges. See the gallery for screenshots and diagrams.</p>`,
     images: ["./assets/project-3.png"],
     galleryImages: [
-      "./assets/project-3.png",
-      "./assets/project-3.png",
-      "./assets/project-3.png",
-      "./assets/project-3.png"
+      "./assets/project-3.1.png",
+      "./assets/project-3.2.png",
+      "./assets/project-3.3.png",
     ],
     galleryText: `<p>MechaVR gallery: large screenshots, control diagrams, and developer commentary belong here. Include links to documentation, build notes, and credits.</p>`
   }
@@ -49,9 +51,16 @@ function getQueryProject() {
   return params.get('project');
 }
 
+function extractYouTubeId(url) {
+  const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
 function populateProjectPage(id) {
   const data = projectDataPage[id];
   const titleEl = document.getElementById('project-title');
+  const trailerEl = document.getElementById('project-trailer');
   const imagesEl = document.querySelector('.modal-images');
   const textEl = document.querySelector('.modal-text');
   const galleryImagesEl = document.querySelector('.gallery-images');
@@ -64,6 +73,15 @@ function populateProjectPage(id) {
   }
 
   titleEl.textContent = data.title;
+
+  // Set trailer URL dynamically
+  if (trailerEl && data.trailerUrl) {
+    const videoId = extractYouTubeId(data.trailerUrl);
+    if (videoId) {
+      trailerEl.src = `https://www.youtube.com/embed/${videoId}`;
+    }
+  }
+
   imagesEl.innerHTML = '';
   (data.images || []).forEach((src, i) => {
     const img = document.createElement('img');

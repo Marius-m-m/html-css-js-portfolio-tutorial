@@ -690,3 +690,39 @@ html {
     color: white;
     text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Leichter Glow */
 }
+#shader-toast {
+    position: fixed;
+    bottom: 20px;
+    right: -300px; /* Startet außerhalb */
+    background: #1a1a1a;
+    color: #ccc;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border-left: 3px solid #0078d7; /* Unreal Blau */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: sans-serif;
+    font-size: 0.85rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 9998;
+    transition: right 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#shader-toast.show {
+    right: 20px;
+}
+
+.loader-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #555;
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

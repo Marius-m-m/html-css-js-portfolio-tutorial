@@ -63,3 +63,18 @@ VanillaTilt.init(document.querySelectorAll(".details-container"), {
     "max-glare": 0.3,  // Wie stark das Licht spiegelt
     scale: 1.02        // Leichtes Zoomen
 });
+// --- EASTER EGG: SHADER COMPILER ---
+window.addEventListener("load", () => {
+    // Wir warten 1.5 Sekunden nach dem Laden, damit der Nutzer sich erst sicher fühlt
+    setTimeout(() => {
+        const toast = document.getElementById("shader-toast");
+        if(toast) {
+            toast.classList.add("show");
+            
+            // Nach 4 Sekunden ist er "fertig" und verschwindet wieder
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 4000);
+        }
+    }, 1500);
+});

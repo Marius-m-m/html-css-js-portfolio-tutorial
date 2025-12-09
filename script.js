@@ -63,18 +63,6 @@ function openModalForProject(id) {
     imagesEl.appendChild(img);
   });
 
-  // populate gallery
-  if (galleryImagesEl && galleryTextEl) {
-    galleryImagesEl.innerHTML = '';
-    (data.galleryImages || []).forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = data.title;
-      galleryImagesEl.appendChild(img);
-    });
-    galleryTextEl.innerHTML = data.galleryText || '';
-  }
-
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }

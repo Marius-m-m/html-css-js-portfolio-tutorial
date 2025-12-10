@@ -67,3 +67,27 @@ window.addEventListener("load", () => {
         }
     }, 1500);
 });
+
+window.addEventListener("load", () => {
+    const elem = document.getElementById('bt-image');
+    const container = document.getElementById('bt-container');
+
+    if (elem && container) {
+      
+        const panzoom = Panzoom(elem, {
+            maxScale: 5,
+            minScale: 0.5,    
+            startScale: 1.2,  
+            contain: 'outside' 
+        });
+
+        container.addEventListener('wheel', panzoom.zoomWithWheel);
+
+        container.addEventListener('dblclick', () => {
+             panzoom.reset();
+        });
+    }
+});
+function populateProjectPage(id) {
+  setTimeout(initPanzoom, 100); 
+}

@@ -25,12 +25,12 @@ const projectDataPage = {
       </div>
       <div class="project-context-section">
         <h3>FLOAT</h3>
-        <p>FLOAT connects entertainment with medical progress. In this Mixed Reality puzzle game, players interact using a wearable bracelet from Myomod. The gameplay sessions generate valuable muscle data, directly contributing to the improvement of prosthetic arm control.</p>
+        <p>FLOAT connects entertainment with medical progress. In this Mixed Reality puzzle game, players interact using a wearable bracelet from Myomod. The gameplay sessions generate valuable muscle data, directly contributing to the improvement of arm prosthetic.</p>
       </div>
     `,
     images: ["./assets/project-1.1.jpg"], 
 
-    gallery: [
+gallery: [
       {
         src: "./assets/project-1.png",
         caption: "Placeholder text for Image 1. Explain what is happening in this specific screenshot or blueprint."
@@ -43,10 +43,25 @@ const projectDataPage = {
         src: "./assets/project-1.png",
         caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
       }
+    ],
+    achievements: [
+      "Winner: Varjo Academic Giveaway Campaign",
+      "Winner: HNU Werkschau | Best Game-Award",
+      "Winner: Best Student Games Award | Meaningful Game",
+      "Winner: German Multimedia Prize mb21 2025 | Main Award",
+      "Exhibitor: Gamescom 2025 | Bussines Area",
+      "Exhibitor: Gamescom 2025 | Entertainment Area",
+      "Exhibitor: GermanDevDays 2025",
+      "Exhibitor: Play! Con 2025",
+      "Exhibitor: Hackerkiste Augsburg 2025",
+      "Exhibitor: Next Reality Festival 2025",
+      "Exhibitor: German Multimedia Prize mb21",
+      "Exhibitor: TINCON 2025",
+      "Nominee: XRC25 | Young Talent",
+      "Nominee: XRC25 | Community Award",
+      "Member: Meta Horizon Start Community"
     ]
-    
   },
-
   "neo-tokyo": {
     title: "NEO TOKYO",
     trailerUrl: "https://www.youtube.com/watch?v=Vg8SspmbAuc",
@@ -100,24 +115,37 @@ const projectDataPage = {
         <div class="meta-column">
           <h3>Project Scope</h3>
           <ul>
-            <li>- Bachelor Thesis</li>
-            <li>- Solo Project</li>
-            <li>- VR Hardware</li>
+            <li>- Under Development </li>
+            <li>- Team of 6 People</li>
+            <li>- Unreal Engine 5</li>
           </ul>
         </div>
         <div class="meta-column">
           <h3>My Role</h3>
           <ul>
-            <li>- Full Stack Dev</li>
-            <li>- Hardware Integration</li>
-            <li>- Optimization</li>
+            <li>- Enemy AI Behavior</li>
+            <li>- Combat System Implementation</li>
+            <li>- Game State Management</li>
           </ul>
         </div>
       </div>
       <div class="project-context-section">
-        <h3>The Context</h3>
-        <p>Placeholder text for Mercury overview.</p>
+        <h3>MERCURY</h3>
+        <p>MERCURY is a high-octane VR Mecha Brawler designed exclusively for hand tracking. It stands as the first game of its kind, allowing players to pilot a giant mech using intuitive physical gestures. The project focuses on immersive, fast-paced close-quarters combat without the need for controllers.</p>
       </div>
+      <div class="glass-card" style="padding: 1rem; margin-top: 2rem;">
+    <h3 style="margin-bottom: 0.5rem;">AI Behavior Tree Logic</h3>
+    
+    <div id="bt-container" style="overflow: hidden; border-radius: 12px; height: 500px; border: 1px solid rgba(255,255,255,0.2); cursor: grab; background: #1a1a1a;">
+        
+        <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="width: 100%; height: auto; display: block;" />
+        
+    </div>
+    
+    <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7; text-align: center;">
+        🔍 Mausrad zum Zoomen • Ziehen zum Bewegen
+    </p>
+</div>
     `,
     images: ["./assets/project-3.png"],
 
@@ -154,6 +182,8 @@ function populateProjectPage(id) {
   const textEl = document.querySelector('.modal-text');
   
   const galleryImagesEl = document.querySelector('.gallery-images');
+  const achievementsContainer = document.querySelector('.achievements-list');
+  const achievementsSection = document.getElementById('achievements-section');
 
   if (!data) {
     titleEl.textContent = 'Project not found';
@@ -199,6 +229,21 @@ function populateProjectPage(id) {
     });
   } else {
     galleryImagesEl.innerHTML = '<p>No gallery images available.</p>';
+  }
+
+  if (achievementsContainer && achievementsSection) {
+    achievementsContainer.innerHTML = '';
+    
+    if (data.achievements && data.achievements.length > 0) {
+      data.achievements.forEach(ach => {
+        const li = document.createElement('li');
+        li.textContent = ach;
+        achievementsContainer.appendChild(li);
+      });
+      achievementsSection.style.display = 'block';
+    } else {
+      achievementsSection.style.display = 'none';
+    }
   }
 }
 

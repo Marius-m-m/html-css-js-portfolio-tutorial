@@ -1,4 +1,4 @@
-/* GENERAL */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -9,8 +9,7 @@
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif; /* Modernere Schriftart, falls geladen */
-    /* Der neue, lebendige Hintergrund */
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(-45deg, #f3f4f6, #e2e8f0, #f8fafc, #edf2f7);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
@@ -33,12 +32,10 @@ p {
   line-height: 1.6;
 }
 
-/* TRANSITION */
 a, .btn {
   transition: all 300ms ease;
 }
 
-/* --- NAVIGATION --- */
 nav {
   display: flex;
   justify-content: space-around;
@@ -74,7 +71,6 @@ a:hover {
   cursor: default;
 }
 
-/* HAMBURGER MENU */
 #hamburger-nav {
   display: none;
 }
@@ -104,7 +100,6 @@ a:hover {
   position: absolute;
   top: 100%;
   right: 0;
-  /* Leicht transparent für Modernität, aber sicher lesbar */
   background-color: rgba(255, 255, 255, 0.95);
   width: fit-content;
   max-height: 0;
@@ -112,7 +107,7 @@ a:hover {
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
-  z-index: 100; /* Sicherstellen, dass es über allem liegt */
+  z-index: 100; 
 }
 
 .menu-links a {
@@ -143,7 +138,6 @@ a:hover {
   transform: rotate(-45deg) translate(10px, -5px);
 }
 
-/* --- SECTIONS --- */
 section {
   padding: 3rem 2rem;
   margin: 0 auto;
@@ -157,12 +151,10 @@ section {
   font-size: 3rem;
   text-align: center;
   margin-bottom: 2rem;
-  /* Neuer Gradient-Text Effekt */
   background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  /* Fallback Farbe, falls Browser Gradient nicht kann: */
   color: black; 
 }
 
@@ -170,13 +162,12 @@ section {
   text-align: center;
 }
 
-/* --- PROFILE SECTION --- */
 #profile {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 5rem;
-  height: fit-content; /* Original behalten */
+  height: fit-content; 
   margin-top: 5vh;
   margin-bottom: 0rem;
 }
@@ -209,18 +200,16 @@ section {
   gap: 1rem;
 }
 
-/* ICONS */
 .icon {
   cursor: pointer;
   height: 2rem;
-  transition: transform 0.2s; /* Kleiner Zoom Effekt */
+  transition: transform 0.2s; 
 }
 
 .icon:hover {
   transform: scale(1.1);
 }
 
-/* BUTTONS */
 .btn-container {
   display: flex;
   justify-content: center;
@@ -235,7 +224,7 @@ section {
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   cursor: pointer;
-  background: transparent; /* Wichtig für den Hover */
+  background: transparent; 
 }
 
 .btn-color-1, .btn-color-2 {
@@ -244,17 +233,16 @@ section {
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  background: rgb(30, 30, 30); /* Etwas dunkler für mehr Kontrast */
+  background: rgb(30, 30, 30); 
   color: white;
-  transform: translateY(-3px); /* Der Schwebe-Effekt */
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Schatten beim Schweben */
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
 }
 
 .btn-color-2 {
   background: none;
 }
 
-/* --- PROJECTS SECTION --- */
 #projects {
   position: relative;
   padding-bottom: 3rem;
@@ -278,12 +266,11 @@ section {
   padding: 1.5rem;
   flex: 1;
   
-  /* HIER IST DIE GLAS-MAGIE (Layout bleibt gleich) */
-  background: rgba(255, 255, 255, 0.6); /* Transparentes Weiß */
-  backdrop-filter: blur(12px);          /* Milchglas */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(12px);         
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5); /* Hellerer Rand */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); /* Weicherer Schatten */
+  border: 1px solid rgba(255, 255, 255, 0.5); 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
   
   border-radius: 2rem;
   text-align: center;
@@ -295,7 +282,7 @@ section {
 }
 
 .details-container:hover {
-    transform: translateY(-5px); /* Ganze Karte schwebt leicht */
+    transform: translateY(-5px); 
 }
 
 .article-container {
@@ -316,7 +303,7 @@ section {
 }
 
 .project-img:hover {
-  transform: scale(1.05); /* Bild zoomt leicht rein */
+  transform: scale(1.05);
 }
 
 .project-title {
@@ -326,7 +313,6 @@ section {
   font-weight: 600;
 }
 
-/* --- ABOUT ME SECTION --- */
 #about {
   padding-bottom: 5rem;
 }
@@ -336,16 +322,14 @@ section {
   margin: 2rem auto;
   text-align: center;
   font-size: 1.1rem;
-  padding: 2rem; /* Etwas mehr Innenabstand */
+  padding: 2rem; 
   
-  /* Auch hier Glas-Effekt für bessere Lesbarkeit auf dem Gradient */
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(5px);
   border-radius: 20px;
   border: 1px solid rgba(255,255,255,0.3);
 }
 
-/* --- CONTACT SECTION --- */
 #contact {
   display: flex;
   justify-content: flex-start;
@@ -359,7 +343,6 @@ section {
   justify-content: center;
   border-radius: 2rem;
   
-  /* Glas Effekt statt grauem Hintergrund */
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -386,7 +369,6 @@ section {
   height: 2.5rem;
 }
 
-/* --- FOOTER --- */
 footer {
   height: 26vh;
   margin: 0 1rem;
@@ -401,7 +383,6 @@ footer p {
   text-align: center;
 }
 
-/* --- PROJECT PAGE STYLES (Unverändert) --- */
 .project-page {
   padding: 2rem;
 }
@@ -512,21 +493,20 @@ footer p {
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* ANIMATION KLASSE */
-/* --- NAVIGATION FIX --- */
+
 nav, #desktop-nav, #hamburger-nav {
-    position: relative;  /* WICHTIG: Ohne das wirkt z-index nicht! */
-    z-index: 9999;       /* Ganz sicher ganz oben */
-    background: transparent; /* Falls du den Hintergrund sehen willst */
+    position: relative; 
+    z-index: 9999;     
+    background: transparent;
 }
 
-/* Damit die Links auch wirklich klickbar sind und nicht von ihrem eigenen Effekt blockiert werden */
+
 .nav-links li a {
     position: relative;
     z-index: 10000;
 }
 
-/* Das macht die Bilder sicher klickbar */
+
 .project-img {
     z-index: 10;
     position: relative;
@@ -537,9 +517,9 @@ nav, #desktop-nav, #hamburger-nav {
 }
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem; /* Hält etwas Abstand nach oben beim Springen */
+    scroll-padding-top: 5rem; 
 }
-/* Tech Stack Slider - Updated for 10 Icons */
+
 #tech-stack {
     padding: 3rem 0;
     overflow: hidden;
@@ -559,9 +539,8 @@ html {
 
 .slide-track {
     display: flex;
-    /* RECHNUNG: 150px Breite * 20 Icons (10 Original + 10 Kopie) */
     width: calc(150px * 20); 
-    animation: scroll 40s linear infinite; /* Etwas langsamer, da mehr Icons */
+    animation: scroll 40s linear infinite; 
 }
 
 .slide {
@@ -578,13 +557,11 @@ html {
     width: auto;
     object-fit: contain;
     
-    /* Clean Look: Grayscale */
     filter: grayscale(100%) opacity(0.7); 
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-/* Hover Effekt: Farbe kommt zurück */
 .slide img:hover {
     filter: grayscale(0%) opacity(1);
     transform: scale(1.1);
@@ -592,7 +569,6 @@ html {
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    /* Wir schieben um die Hälfte der Breite (10 Icons * 150px) nach links */
     100% { transform: translateX(calc(-150px * 10)); } 
 }
 #scroll-progress {
@@ -601,18 +577,15 @@ html {
     left: 0;
     width: 0%;
     height: 3px;
-    /* Ein schöner Verlauf passend zu deinem Design */
     background: linear-gradient(to right, #3b82f6, #8b5cf6);
-    z-index: 10001; /* Über der Navigation */
+    z-index: 10001; 
     transition: width 0.1s;
 }
-/* GLITCH EFFEKT */
 .glitch-hover {
     position: relative;
     display: inline-block;
 }
 
-/* Die Kopien des Textes, die wir verzerren */
 .glitch-hover::before,
 .glitch-hover::after {
     content: attr(data-text);
@@ -621,13 +594,12 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #f3f4f6; /* Muss deine Hintergrundfarbe haben, damit es "ausschneidet" */
+    background: #f3f4f6; 
     overflow: hidden;
-    opacity: 0; /* Normalerweise unsichtbar */
+    opacity: 0; 
     transition: opacity 0.1s;
 }
 
-/* Hover-Zustand: Sichtbar machen & animieren */
 .glitch-hover:hover::before {
     left: 2px;
     text-shadow: -1px 0 red;
@@ -644,7 +616,6 @@ html {
     opacity: 1;
 }
 
-/* Die wilden Bewegungen */
 @keyframes glitch-anim-1 {
     0% { clip: rect(30px, 9999px, 10px, 0); }
     20% { clip: rect(70px, 9999px, 90px, 0); }
@@ -662,43 +633,42 @@ html {
     80% { clip: rect(90px, 9999px, 30px, 0); }
     100% { clip: rect(60px, 9999px, 40px, 0); }
 }
-/* --- CUSTOM SCROLLBAR (Chrome, Edge, Safari) --- */
 ::-webkit-scrollbar {
     width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05); /* Fast unsichtbare Spur */
+    background: rgba(0, 0, 0, 0.05); 
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #333, #555); /* Dunkler Farbverlauf */
+    background: linear-gradient(180deg, #333, #555); 
     border-radius: 5px;
-    border: 2px solid transparent; /* Macht ihn optisch schlanker */
+    border: 2px solid transparent; 
     background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #3b82f6, #1d4ed8); /* Wird Blau beim Drüberfahren */
+    background: linear-gradient(180deg, #3b82f6, #1d4ed8); 
     border-radius: 5px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
-/* --- TEXT SELECTION COLOR --- */
+
 ::selection {
-    background: #3b82f6; /* Dein Gaming-Blau */
+    background: #3b82f6; 
     color: white;
-    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Leichter Glow */
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); 
 }
 #shader-toast {
     position: fixed;
     bottom: 20px;
-    right: -300px; /* Startet außerhalb */
+    right: -300px; 
     background: #1a1a1a;
     color: #ccc;
     padding: 10px 15px;
     border-radius: 4px;
-    border-left: 3px solid #0078d7; /* Unreal Blau */
+    border-left: 3px solid #0078d7; 
     display: flex;
     align-items: center;
     gap: 10px;

@@ -1,9 +1,9 @@
-// Project page script: populate Overview and Gallery from query param `project`
+
 const projectDataPage = {
   "float": {
     title: "FLOAT",
     trailerUrl: "https://www.youtube.com/watch?v=q4AvDntjlUA",
-    // OVERVIEW BEREICH
+
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -17,20 +17,19 @@ const projectDataPage = {
         <div class="meta-column">
           <h3>My Role</h3>
           <ul>
-            <li>- Main Programmer</li>
-            <li>- Shader Development</li>
-            <li>- Tool Programming</li>
+            <li>- Programmer</li>
+            <li>- Visual Effects</li>
+            <li>- Version Control & Collaboration</li>
           </ul>
         </div>
       </div>
       <div class="project-context-section">
-        <h3>The Context</h3>
-        <p>Placeholder text for the overview context. Describe the main challenges here.</p>
+        <h3>FLOAT</h3>
+        <p>FLOAT connects entertainment with medical progress. In this Mixed Reality puzzle game, players interact using a wearable bracelet from Myomod. The gameplay sessions generate valuable muscle data, directly contributing to the improvement of prosthetic arm control.</p>
       </div>
     `,
-    images: ["./assets/project-1.png"], // Hauptbild(er) für Overview
+    images: ["./assets/project-1.1.jpg"], 
 
-    // NEUE GALERIE STRUKTUR: BILD + TEXT PAARE
     gallery: [
       {
         src: "./assets/project-1.png",
@@ -45,6 +44,7 @@ const projectDataPage = {
         caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
       }
     ]
+    
   },
 
   "neo-tokyo": {
@@ -57,7 +57,7 @@ const projectDataPage = {
           <ul>
             <li>- Game Jam Project</li>
             <li>- 48 Hours</li>
-            <li>- Unity</li>
+            <li>- Unreal Engine 5</li>
           </ul>
         </div>
         <div class="meta-column">
@@ -150,13 +150,10 @@ function populateProjectPage(id) {
   const titleEl = document.getElementById('project-title');
   const trailerEl = document.getElementById('project-trailer');
   
-  // Overview Elements
   const imagesEl = document.querySelector('.modal-images');
   const textEl = document.querySelector('.modal-text');
   
-  // Gallery Elements
   const galleryImagesEl = document.querySelector('.gallery-images');
-  // Note: We don't need .gallery-text anymore because text is now attached to images
 
   if (!data) {
     titleEl.textContent = 'Project not found';
@@ -164,7 +161,6 @@ function populateProjectPage(id) {
     return;
   }
 
-  /* --- 1. SET TITLE & TRAILER --- */
   titleEl.textContent = data.title;
   if (trailerEl && data.trailerUrl) {
     const videoId = extractYouTubeId(data.trailerUrl);
@@ -173,7 +169,6 @@ function populateProjectPage(id) {
     }
   }
 
-  /* --- 2. POPULATE OVERVIEW TAB --- */
   imagesEl.innerHTML = '';
   (data.images || []).forEach((src) => {
     const img = document.createElement('img');
@@ -183,30 +178,23 @@ function populateProjectPage(id) {
   });
   textEl.innerHTML = data.text || '';
 
-  /* --- 3. POPULATE GALLERY TAB (New Logic) --- */
   galleryImagesEl.innerHTML = '';
   
   if (data.gallery && data.gallery.length > 0) {
-    // Loop through the new object structure
     data.gallery.forEach(item => {
-      // Create a container for the Pair (Image + Text)
       const itemContainer = document.createElement('div');
       itemContainer.className = 'gallery-item';
 
-      // Create Image
       const img = document.createElement('img');
       img.src = item.src;
       img.alt = "Gallery Image";
 
-      // Create Caption Text
       const caption = document.createElement('p');
       caption.textContent = item.caption;
 
-      // Append to container
       itemContainer.appendChild(img);
       itemContainer.appendChild(caption);
 
-      // Append container to main gallery div
       galleryImagesEl.appendChild(itemContainer);
     });
   } else {
@@ -236,15 +224,26 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTabs();
 });
 
-/* --- LOGO KLICK-LOGIK (Tab schließen oder zur Startseite) --- */
 
 document.getElementById('home-logo').addEventListener('click', function() {
-  // Prüfen, ob diese Seite von einer anderen Seite geöffnet wurde (window.opener existiert)
-  // UND ob diese Eltern-Seite noch offen ist (!window.opener.closed)
   if (window.opener && !window.opener.closed) {
-    window.close(); // Tab schließen
+    window.close(); 
   } else {
-    // Falls kein Eltern-Tab da ist (oder User den Link direkt geöffnet hat)
     window.location.href = 'index.html'; 
   }
 });
+
+function navigateToSection(sectionId) {
+  if (window.opener && !window.opener.closed) {
+
+    const target = sectionId ? `index.html#${sectionId}` : 'index.html';
+    window.opener.location.href = target;
+    
+
+    window.close();
+  } else {
+
+    const target = sectionId ? `index.html#${sectionId}` : 'index.html';
+    window.location.href = target;
+  }
+}

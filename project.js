@@ -107,9 +107,10 @@ gallery: [
     ]
   },
 
-  "Mercury": {
+"Mercury": {
     title: "Mercury",
     trailerUrl: "https://www.youtube.com/watch?v=MaNCLFus59I",
+    
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -129,26 +130,32 @@ gallery: [
           </ul>
         </div>
       </div>
+      
       <div class="project-context-section">
         <h3>MERCURY</h3>
         <p>MERCURY is a high-octane VR Mecha Brawler designed exclusively for hand tracking. It stands as the first game of its kind, allowing players to pilot a giant mech using intuitive physical gestures. The project focuses on immersive, fast-paced close-quarters combat without the need for controllers.</p>
       </div>
-      <div class="glass-card" style="padding: 1rem; margin-top: 2rem;">
-    <h3 style="margin-bottom: 0.5rem;">AI Behavior Tree Logic</h3>
-    
-    <div id="bt-container" style="overflow: hidden; border-radius: 12px; height: 500px; border: 1px solid rgba(255,255,255,0.2); cursor: grab; background: #1a1a1a;">
-        
-        <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="width: 100%; height: auto; display: block;" />
-        
-    </div>
-    
-    <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7; text-align: center;">
-        🔍 Mausrad zum Zoomen • Ziehen zum Bewegen
-    </p>
-</div>
-    `,
-    images: ["./assets/project-3.png"],
 
+      <div class="glass-card" style="padding: 1rem; margin-top: 2rem;">
+          <h3 style="margin-bottom: 0.5rem;">AI Behavior Tree Logic</h3>
+          
+          <div id="bt-container" style="display: flex; justify-content: center; align-items: flex-start; overflow: hidden; border-radius: 12px; height: 500px; border: 1px solid rgba(255,255,255,0.2); cursor: grab; background: #1a1a1a;">
+              <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="max-width: 100%; height: auto; display: block; transform-origin: top center; margin-top: 20px;" />
+          </div>
+          
+          <p style="
+              font-size: 1rem; 
+              color: rgb(85, 85, 85); 
+              background: #f9f9f9; 
+              padding: 1.5rem; 
+              border-radius: 8px; 
+              border-left: 4px solid rgb(53, 53, 53); 
+              margin-top: 1rem; 
+              text-align: left;">
+              Dieser Behavior Tree zeigt die komplexe Entscheidungslogik der Gegner-KI, von der Zielsuche bis zum Nahkampf-Angriff.
+          </p>
+      </div>
+    `,
     gallery: [
       {
         src: "./assets/project-3.png",
@@ -244,6 +251,7 @@ function populateProjectPage(id) {
     } else {
       achievementsSection.style.display = 'none';
     }
+    setTimeout(initPanzoom, 100);
   }
 }
 
@@ -290,5 +298,26 @@ function navigateToSection(sectionId) {
 
     const target = sectionId ? `index.html#${sectionId}` : 'index.html';
     window.location.href = target;
+  }
+}
+
+function initPanzoom() {
+  const elem = document.getElementById('bt-image');
+  const container = document.getElementById('bt-container');
+
+  if (elem && container && typeof Panzoom !== 'undefined') {
+      const panzoom = Panzoom(elem, {
+          maxScale: 20,
+          minScale: 1.0,    
+          startScale: 2.0,   
+          contain: 'outside',
+          cursor: 'grab'
+      });
+
+      container.addEventListener('wheel', panzoom.zoomWithWheel);
+      
+      container.addEventListener('dblclick', () => {
+          panzoom.reset();
+      });
   }
 }

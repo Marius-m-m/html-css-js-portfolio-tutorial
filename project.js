@@ -1,4 +1,3 @@
-
 const projectDataPage = {
   "float": {
     title: "FLOAT",
@@ -30,7 +29,7 @@ const projectDataPage = {
     `,
     images: ["./assets/project-1.1.jpg"], 
 
-gallery: [
+    gallery: [
       {
         src: "./assets/project-1.png",
         caption: "Placeholder text for Image 1. Explain what is happening in this specific screenshot or blueprint."
@@ -44,21 +43,52 @@ gallery: [
         caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
       }
     ],
-    achievements: [
-      "Winner: Varjo Academic Giveaway Campaign",
+achievements: [
+      // --- MIT LINK (Werden blau/unterstrichen) ---
+      {
+        text: "Winner: Varjo Academic Giveaway Campaign",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/"
+      },
+      {
+        text: "Winner: Best Student Games Award | Meaningful Game",
+        link: "https://www.studentgamesfestival.com/2025-winners"
+      },
+      {
+        text: "Winner: German Multimedia Prize mb21 2025 | Main Award",
+        link: "https://www.mb21.de/wettbewerbsjahr_2025.html?articles=float"
+      },
+      {
+        text: "Nominee: XRC25 | Young Talent",
+        link: "https://nextrealitycontest.de/de/nominierte/nominierte-2025/"
+      },
+      {
+        text: "Nominee: XRC25 | Community Award",
+        link: "https://nextrealitycontest.de/de/nominierte/nominierte-2025/"
+      },
+      {
+        text: "Exhibitor: Gamescom 2025 | Business Area",
+        link: "https://www.games-bavaria.com/gamescom-2025/"
+      },
+      {
+        text: "Exhibitor: Gamescom 2025 | Entertainment Area",
+        link: "https://rawtalentbooth.com/"
+      },
+      {
+        text: "Exhibitor: GermanDevDays 2025",
+        link: "https://germandevdays.com/exhibitors"
+      },
+      {
+        text: "Exhibitor: Play! Con 2025",
+        link: "https://play-con.de/ausstellerinnen-2025-neuulm/"
+      },
+      {
+        text: "Exhibitor: Next Reality Festival 2025",
+        link: "https://nextrealityfestival.com/aussteller/float/"
+      },
+
       "Winner: HNU Werkschau | Best Game-Award",
-      "Winner: Best Student Games Award | Meaningful Game",
-      "Winner: German Multimedia Prize mb21 2025 | Main Award",
-      "Exhibitor: Gamescom 2025 | Bussines Area",
-      "Exhibitor: Gamescom 2025 | Entertainment Area",
-      "Exhibitor: GermanDevDays 2025",
-      "Exhibitor: Play! Con 2025",
       "Exhibitor: Hackerkiste Augsburg 2025",
-      "Exhibitor: Next Reality Festival 2025",
-      "Exhibitor: German Multimedia Prize mb21",
       "Exhibitor: TINCON 2025",
-      "Nominee: XRC25 | Young Talent",
-      "Nominee: XRC25 | Community Award",
       "Member: Meta Horizon Start Community"
     ]
   },
@@ -107,7 +137,7 @@ gallery: [
     ]
   },
 
-"Mercury": {
+  "Mercury": {
     title: "Mercury",
     trailerUrl: "https://www.youtube.com/watch?v=MaNCLFus59I",
     
@@ -158,12 +188,19 @@ gallery: [
     `,
     gallery: [
       {
-        src: "./assets/project-3.png",
-        caption: "Placeholder text describing the mech cockpit view."
+        // WICHTIG: Ich habe /blueprint/ zu /render/ geändert, damit das Embed funktioniert!
+        src: "https://blueprintue.com/render/lrxabwo3/",
+        caption: "Movement Logic: Calculates velocity and blends animations.",
+        isBlueprint: true 
+      },
+      {
+        src: "https://blueprintue.com/render/435xr683/",
+        caption: "Combat System: Hit detection and damage calculation.",
+        isBlueprint: true
       },
       {
         src: "./assets/project-3.png",
-        caption: "Placeholder text explaining the input mapping system."
+        caption: "Resulting visual effect in-game."
       }
     ]
   }
@@ -198,6 +235,7 @@ function populateProjectPage(id) {
     return;
   }
 
+  // Titel & Trailer
   titleEl.textContent = data.title;
   if (trailerEl && data.trailerUrl) {
     const videoId = extractYouTubeId(data.trailerUrl);
@@ -206,6 +244,7 @@ function populateProjectPage(id) {
     }
   }
 
+  // Bilder oben
   imagesEl.innerHTML = '';
   (data.images || []).forEach((src) => {
     const img = document.createElement('img');
@@ -213,8 +252,10 @@ function populateProjectPage(id) {
     img.alt = data.title;
     imagesEl.appendChild(img);
   });
+  
   textEl.innerHTML = data.text || '';
 
+  // Galerie
   galleryImagesEl.innerHTML = '';
   
   if (data.gallery && data.gallery.length > 0) {
@@ -222,39 +263,106 @@ function populateProjectPage(id) {
       const itemContainer = document.createElement('div');
       itemContainer.className = 'gallery-item';
 
-      const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = "Gallery Image";
+      if (item.isBlueprint) {
+        const iframeContainer = document.createElement('div');
+        iframeContainer.style.cssText = `
+            width: 100%; height: 500px; border-radius: 12px; overflow: hidden; 
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.1); background: #212121;
+        `;
+        const iframe = document.createElement('iframe');
+        iframe.src = item.src;
+        iframe.style.cssText = "width: 100%; height: 100%; border: none;";
+        iframe.scrolling = "no"; 
+        iframe.allowFullscreen = true;
+        iframeContainer.appendChild(iframe);
+        itemContainer.appendChild(iframeContainer);
 
-      const caption = document.createElement('p');
-      caption.textContent = item.caption;
+      } else if (item.isZoomable) {
+         const img = document.createElement('img');
+         img.src = item.src;
+         img.alt = "Zoomable Image";
+         itemContainer.appendChild(img);
+      } else {
+        const img = document.createElement('img');
+        img.src = item.src;
+        img.alt = "Gallery Image";
+        itemContainer.appendChild(img);
+      }
 
-      itemContainer.appendChild(img);
-      itemContainer.appendChild(caption);
-
+      if (item.caption) {
+        const caption = document.createElement('p');
+        caption.textContent = item.caption;
+        caption.style.marginTop = "1rem";
+        itemContainer.appendChild(caption);
+      }
       galleryImagesEl.appendChild(itemContainer);
     });
   } else {
     galleryImagesEl.innerHTML = '<p>No gallery images available.</p>';
   }
 
+  // --- HIER WAR DER FEHLER: KORRIGIERTE ACHIEVEMENTS LOGIK ---
   if (achievementsContainer && achievementsSection) {
     achievementsContainer.innerHTML = '';
     
     if (data.achievements && data.achievements.length > 0) {
       data.achievements.forEach(ach => {
         const li = document.createElement('li');
-        li.textContent = ach;
+        
+        // FALL 1: Es ist ein Objekt UND hat einen Link
+        if (typeof ach === 'object' && ach.link) {
+            const link = document.createElement('a');
+            link.href = ach.link;
+            link.target = "_blank"; 
+            link.textContent = ach.text;
+            link.className = "achievement-link"; 
+            li.appendChild(link);
+        } 
+        // FALL 2: Es ist ein Objekt, aber ohne Link (nur Text)
+        else if (typeof ach === 'object') {
+            li.textContent = ach.text;
+        }
+        // FALL 3: Es ist einfach nur ein Text-String (wie früher)
+        else {
+            li.textContent = ach;
+        }
+        
         achievementsContainer.appendChild(li);
       });
       achievementsSection.style.display = 'block';
     } else {
       achievementsSection.style.display = 'none';
     }
-    setTimeout(initPanzoom, 100);
+    
+    if (typeof initPanzoom === 'function') {
+        setTimeout(initPanzoom, 100);
+    }
   }
 }
 
+// --- Zoom Logik ---
+function initPanzoom() {
+  const elem = document.getElementById('bt-image');
+  const container = document.getElementById('bt-container');
+
+  if (elem && container && typeof Panzoom !== 'undefined') {
+      const panzoom = Panzoom(elem, {
+          maxScale: 20,
+          minScale: 1.0,    
+          startScale: 2.0,   
+          contain: 'outside',
+          cursor: 'grab'
+      });
+
+      container.addEventListener('wheel', panzoom.zoomWithWheel);
+      container.addEventListener('dblclick', () => {
+          panzoom.reset();
+      });
+  }
+}
+
+// --- Tab Logik ---
 function setupTabs() {
   const tabButtons = document.querySelectorAll('.modal-tabs .tab');
   tabButtons.forEach(btn => {
@@ -271,53 +379,20 @@ function setupTabs() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const id = getQueryProject();
-  populateProjectPage(id);
-  setupTabs();
-});
-
-
-document.getElementById('home-logo').addEventListener('click', function() {
-  if (window.opener && !window.opener.closed) {
-    window.close(); 
-  } else {
-    window.location.href = 'index.html'; 
-  }
-});
-
+// --- Navigation Logik ---
 function navigateToSection(sectionId) {
   if (window.opener && !window.opener.closed) {
-
     const target = sectionId ? `index.html#${sectionId}` : 'index.html';
     window.opener.location.href = target;
-    
-
     window.close();
   } else {
-
     const target = sectionId ? `index.html#${sectionId}` : 'index.html';
     window.location.href = target;
   }
 }
 
-function initPanzoom() {
-  const elem = document.getElementById('bt-image');
-  const container = document.getElementById('bt-container');
-
-  if (elem && container && typeof Panzoom !== 'undefined') {
-      const panzoom = Panzoom(elem, {
-          maxScale: 20,
-          minScale: 1.0,    
-          startScale: 2.0,   
-          contain: 'outside',
-          cursor: 'grab'
-      });
-
-      container.addEventListener('wheel', panzoom.zoomWithWheel);
-      
-      container.addEventListener('dblclick', () => {
-          panzoom.reset();
-      });
-  }
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const id = getQueryProject();
+  populateProjectPage(id);
+  setupTabs();
+});

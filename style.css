@@ -539,8 +539,8 @@ html {
 
 .slide-track {
     display: flex;
-    width: calc(150px * 20); 
-    animation: scroll 40s linear infinite; 
+    width: calc(150px * 16); 
+    animation: scroll 30s linear infinite; 
 }
 
 .slide {
@@ -569,7 +569,7 @@ html {
 
 @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-150px * 10)); } 
+    100% { transform: translateX(calc(-150px * 8)); } 
 }
 #scroll-progress {
     position: fixed;
@@ -735,4 +735,119 @@ html {
     background: rgba(255,255,255,0.4);
     border-radius: 8px;
     transition: all 0.2s ease;
+}
+/* --- ACHIEVEMENTS DESIGN --- */
+.achievements-box {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.achievements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+/* Basis-Style für ALLE Einträge (ob Link oder nicht) */
+.achievements-list li {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(60, 60, 60); /* Standard Textfarbe */
+}
+
+/* Das Häkchen davor */
+.achievements-list li::before {
+    content: ''; 
+    font-size: 1.2rem;
+    flex-shrink: 0; /* Verhindert, dass das Icon gequetscht wird */
+}
+
+/* --- SPEZIAL-STYLE FÜR LINKS --- */
+.achievements-list a.achievement-link {
+    text-decoration: none;
+    color: #3b82f6; /* Dein Blau -> Zeigt sofort "Ich bin ein Link" */
+    font-weight: 500;
+    border-bottom: 1px dashed rgba(59, 130, 246, 0.4); /* Gestrichelte Linie */
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Der kleine Pfeil hinter dem Link */
+.achievements-list a.achievement-link::after {
+    content: '↗'; /* Pfeil nach oben rechts */
+    font-size: 0.85em;
+    opacity: 0.6;
+}
+
+/* Hover Effekt für Links */
+.achievements-list a.achievement-link:hover {
+    color: #1d4ed8; /* Dunkleres Blau beim Drüberfahren */
+    border-bottom-style: solid; /* Linie wird durchgezogen */
+    transform: translateX(3px); /* Bewegt sich leicht */
+}
+.achievements-list a.achievement-link:hover::after {
+    opacity: 1;
+}
+/* --- MODAL (POP-UP) STYLES --- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dunkler Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none; /* Klicks gehen durch, wenn unsichtbar */
+  transition: opacity 0.3s ease;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+/* Wenn das Modal "offen" ist (wird per JS gesteuert, falls du es nutzt) */
+.modal[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Das "x" oben rechts im Fenster */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #ef4444; /* Rot beim Drüberfahren */
 }

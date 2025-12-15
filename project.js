@@ -31,15 +31,19 @@ const projectDataPage = {
 
     gallery: [
       {
-        src: "./assets/project-1.png",
+        src: "./assets/Walk.mp4",
         caption: "Placeholder text for Image 1. Explain what is happening in this specific screenshot or blueprint."
       },
       {
-        src: "./assets/project-1.png",
+        src: "./assets/Butterfly.mp4",
         caption: "Placeholder text for Image 2. Maybe explain a specific code snippet shown above."
       },
       {
-        src: "./assets/project-1.png",
+        src: "./assets/Fireworks.mp4",
+        caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
+      },
+       {
+        src: "./assets/Fish.mp4",
         caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
       }
     ],
@@ -94,7 +98,7 @@ achievements: [
   },
   "neo-tokyo": {
     title: "NEO TOKYO",
-    trailerUrl: "./assets/Trailer_NeoTokyo.mp4",
+    trailerUrl: "./assets/Trailer_Neo_Tokyo.mp4",
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -286,6 +290,13 @@ function populateProjectPage(id) {
 // Galerie
   galleryImagesEl.innerHTML = '';
   
+  // WICHTIG: Grid-Layout NUR für 'float' aktivieren
+  // Wir setzen die Klasse jedes Mal zurück, damit sie nicht bei anderen Projekten kleben bleibt
+  if (id === 'float') {
+    galleryImagesEl.className = 'gallery-images float-grid-mode';
+  } else {
+    galleryImagesEl.className = 'gallery-images'; // Standard für alle anderen
+  }
   if (data.gallery && data.gallery.length > 0) {
     data.gallery.forEach(item => {
       const itemContainer = document.createElement('div');
@@ -304,12 +315,6 @@ function populateProjectPage(id) {
         video.playsInline = true; // Wichtig für iOS/Mobile
         video.controls = true;   // Zeigt Play/Pause Buttons (optional, kannst du auf false setzen)
         
-        // Gleiches Styling wie bei den Bildern
-        video.style.width = "100%";
-        video.style.borderRadius = "12px";
-        video.style.boxShadow = "0 10px 30px rgba(0,0,0,0.15)";
-        video.style.marginBottom = "1rem";
-
         itemContainer.appendChild(video);
       } 
       // --- NEU: VIDEO ABFRAGE ENDE ---

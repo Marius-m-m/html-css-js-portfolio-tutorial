@@ -557,7 +557,9 @@ html {
     width: auto;
     object-fit: contain;
     
-    filter: grayscale(100%) opacity(0.7); 
+    /* Jetzt immer bunt und volle Deckkraft */
+    filter: grayscale(0%) opacity(1); 
+    
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -925,7 +927,6 @@ body.dark-mode .btn-color-2:hover {
 
 /* WICHTIG: Icons invertieren (aus Schwarz wird Weiß) */
 body.dark-mode .icon,
-body.dark-mode .slide img,
 body.dark-mode .hamburger-icon span {
   filter: invert(1);
 }
@@ -989,4 +990,120 @@ body.dark-mode .sun-icon {
   background: black; /* Sieht besser aus, falls Video lädt */
   border: none;
   display: block;
+}
+/* --- FIX FÜR SLIDER FARBEN --- */
+
+/* Standardmäßig nichts invertieren, ABER: */
+/* GitHub ist schwarz -> muss weiß werden */
+body.dark-mode .slide img[alt="GitHub"] {
+  filter: invert(1);
+}
+
+/* Unreal Engine ist schwarz -> muss weiß werden */
+body.dark-mode .slide img[alt="Unreal"] {
+  filter: invert(1);
+}
+
+/* Falls du X/Twitter dabei hättest, müsste das auch hier rein */
+/* --- NEUE GALERIE (GRID LAYOUT) --- */
+.gallery-images {
+  display: grid;
+  /* Erzeugt automatisch Spalten: Min 350px breit, sonst 2 nebeneinander */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 1.5rem; /* Abstand zwischen den Videos */
+  width: 100%;
+  max-width: 1000px; /* Begrenzt die Gesamtbreite */
+  margin: 2rem auto 0 auto;
+}
+
+.gallery-item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Videos und Bilder einheitlich machen */
+.gallery-item video, 
+.gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Erzwingt, dass alle Videos das gleiche Format haben */
+  object-fit: cover;    /* Schneidet Ränder ab, damit nichts verzerrt wird */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Dezentere Schatten für Clean Look */
+  margin-bottom: 0.5rem;
+  background: black;
+}
+
+/* Beschriftung unter den Videos kleiner und cleaner */
+.gallery-item p {
+  font-size: 0.9rem;
+  color: rgb(100, 100, 100);
+  background: transparent; /* Kein grauer Kasten mehr */
+  padding: 0.5rem 0 0 0;
+  border: none; /* Kein Strich an der Seite */
+  margin-top: 0;
+}
+/* --- STANDARD GALERIE (Neo Tokyo, Mercury, etc.) --- */
+/* Bleibt wie früher: Groß und untereinander */
+.gallery-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* --- FLOAT SPEZIAL GALERIE (Nur für Float!) --- */
+/* Hier aktivieren wir das Grid (2 nebeneinander) */
+.gallery-images.float-grid-mode {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+/* Styling für die Items IN der Float-Galerie */
+.gallery-images.float-grid-mode .gallery-item {
+  width: 100%;
+}
+
+.gallery-images.float-grid-mode .gallery-item video,
+.gallery-images.float-grid-mode .gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+}
+
+/* Text in der Float-Galerie cleaner machen */
+.gallery-images.float-grid-mode .gallery-item p {
+  font-size: 0.9rem;
+  color: rgb(100, 100, 100);
+  background: transparent;
+  padding: 0.5rem 0 0 0;
+  border: none;
+  margin-top: 0;
+}
+body.dark-mode {
+  /* Tiefschwarz mit einem Hauch von dunklem Violett */
+  background: linear-gradient(-45deg, #020202, #0f0b15, #16121d, #020202);
+  background-size: 400% 400%;
+  color: #e2e8f0;
+}
+
+/* Macht die Karten im Dark Mode dunkler und lesbarer */
+body.dark-mode .details-container,
+body.dark-mode .contact-info-upper-container,
+body.dark-mode .about-text-container,
+body.dark-mode .achievements-box,
+body.dark-mode .modal-content,
+body.dark-mode #tech-stack,
+body.dark-mode .gallery-item p {
+  /* Stärkeres Schwarz für besseren Kontrast zur Schrift */
+  background: rgba(0, 0, 0, 0.75); 
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }

@@ -1,7 +1,7 @@
 const projectDataPage = {
   "float": {
     title: "FLOAT",
-    trailerUrl: "https://www.youtube.com/watch?v=q4AvDntjlUA",
+    trailerUrl: "assets/float-trailer.mp4",
 
     text: `
       <div class="project-meta-grid">
@@ -94,7 +94,7 @@ achievements: [
   },
   "neo-tokyo": {
     title: "NEO TOKYO",
-    trailerUrl: "https://www.youtube.com/watch?v=Vg8SspmbAuc",
+    trailerUrl: "assets/neo-tokyo-trailer.mp4",
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -140,7 +140,7 @@ achievements: [
 
   "Mercury": {
     title: "Mercury",
-    trailerUrl: "https://www.youtube.com/watch?v=MaNCLFus59I",
+    trailerUrl: "assets/mercury-trailer.mp4",
     
     text: `
       <div class="project-meta-grid">
@@ -256,7 +256,7 @@ function populateProjectPage(id) {
   
   textEl.innerHTML = data.text || '';
 
-  // Galerie
+// Galerie
   galleryImagesEl.innerHTML = '';
   
   if (data.gallery && data.gallery.length > 0) {
@@ -264,7 +264,30 @@ function populateProjectPage(id) {
       const itemContainer = document.createElement('div');
       itemContainer.className = 'gallery-item';
 
-      if (item.isBlueprint) {
+      // --- NEU: VIDEO ABFRAGE START ---
+      // Prüfen, ob die Datei auf .mp4 endet
+      if (item.src.endsWith('.mp4')) {
+        const video = document.createElement('video');
+        video.src = item.src;
+        
+        // Einstellungen für automatischen Loop
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;      // Muted ist PFLICHT für Autoplay in modernen Browsern
+        video.playsInline = true; // Wichtig für iOS/Mobile
+        video.controls = true;   // Zeigt Play/Pause Buttons (optional, kannst du auf false setzen)
+        
+        // Gleiches Styling wie bei den Bildern
+        video.style.width = "100%";
+        video.style.borderRadius = "12px";
+        video.style.boxShadow = "0 10px 30px rgba(0,0,0,0.15)";
+        video.style.marginBottom = "1rem";
+
+        itemContainer.appendChild(video);
+      } 
+      // --- NEU: VIDEO ABFRAGE ENDE ---
+
+      else if (item.isBlueprint) {
         const iframeContainer = document.createElement('div');
         iframeContainer.style.cssText = `
             width: 100%; height: 500px; border-radius: 12px; overflow: hidden; 

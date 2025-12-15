@@ -1,4 +1,26 @@
+// --- DARK MODE LOGIC ---
+function toggleTheme() {
+  const body = document.body;
+  body.classList.toggle("dark-mode");
 
+  // Speichern der Entscheidung im Browser
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+}
+
+// Beim Laden der Seite prüfen, was gespeichert wurde
+function loadTheme() {
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+}
+
+// Funktion sofort ausführen
+loadTheme();
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");

@@ -972,3 +972,21 @@ body.dark-mode .moon-icon {
 body.dark-mode .sun-icon {
   display: block !important;
 }
+/* In style.css (ca. Zeile 480) */
+
+.trailer-container {
+  width: 100%;
+}
+
+/* WICHTIG: Gilt jetzt für iframe UND video */
+.trailer-container iframe,
+.trailer-container video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: black; /* Sieht besser aus, falls Video lädt */
+  border: none;
+  display: block;
+}

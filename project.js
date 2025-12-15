@@ -1,7 +1,7 @@
 const projectDataPage = {
   "float": {
     title: "FLOAT",
-    trailerUrl: "assets/float-trailer.mp4",
+    trailerUrl: "./assets/Trailer_Float.mp4",
 
     text: `
       <div class="project-meta-grid">
@@ -94,7 +94,7 @@ achievements: [
   },
   "neo-tokyo": {
     title: "NEO TOKYO",
-    trailerUrl: "assets/neo-tokyo-trailer.mp4",
+    trailerUrl: "./assets/Trailer_NeoTokyo.mp4",
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -140,7 +140,7 @@ achievements: [
 
   "Mercury": {
     title: "Mercury",
-    trailerUrl: "assets/mercury-trailer.mp4",
+    trailerUrl: "./assets/Trailer_Mercury.mp4",
     
     text: `
       <div class="project-meta-grid">
@@ -236,12 +236,39 @@ function populateProjectPage(id) {
     return;
   }
 
-  // Titel & Trailer
+// --- TITEL & TRAILER LOGIK (NEU) ---
   titleEl.textContent = data.title;
-  if (trailerEl && data.trailerUrl) {
-    const videoId = extractYouTubeId(data.trailerUrl);
-    if (videoId) {
-      trailerEl.src = `https://www.youtube.com/embed/${videoId}`;
+  
+  // Container holen (statt dem alten iframe)
+  const trailerContainer = document.getElementById('trailer-container');
+  
+  // Container erst leeren (falls vorher was drin war)
+  if (trailerContainer) {
+    trailerContainer.innerHTML = ''; 
+
+    if (data.trailerUrl) {
+      // FALL 1: Es ist eine MP4-Datei (Lokal)
+      if (data.trailerUrl.endsWith('.mp4')) {
+        const video = document.createElement('video');
+        video.src = data.trailerUrl;
+        video.controls = true; // Zeigt Play/Pause/Lautstärke
+        video.autoplay = false; // Trailer nicht automatisch starten (besser für UX)
+        // video.muted = true; // Falls du Autoplay willst, muss muted=true sein
+        
+        trailerContainer.appendChild(video);
+      } 
+      // FALL 2: Es ist YouTube (Fallback)
+      else {
+        const videoId = extractYouTubeId(data.trailerUrl);
+        if (videoId) {
+          const iframe = document.createElement('iframe');
+          iframe.src = `https://www.youtube.com/embed/${videoId}`;
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          
+          trailerContainer.appendChild(iframe);
+        }
+      }
     }
   }
 

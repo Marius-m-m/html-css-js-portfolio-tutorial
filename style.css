@@ -878,7 +878,7 @@ html {
   background: rgba(255, 255, 255, 0.8);
 }
 
-/* --- DARK MODE STYLES --- */
+
 body.dark-mode {
   /* Dunkler Verlauf statt heller Verlauf */
   background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e293b);
@@ -1106,4 +1106,118 @@ body.dark-mode .gallery-item p {
   /* Stärkeres Schwarz für besseren Kontrast zur Schrift */
   background: rgba(0, 0, 0, 0.75); 
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+/* ========================================= */
+/* DARK MODE - COMPLETE OVERHAUL       */
+/* ========================================= */
+
+body.dark-mode {
+  /* Dein Deep Space Hintergrund */
+  background: linear-gradient(-45deg, #020202, #0f0b15, #16121d, #020202);
+  background-size: 400% 400%;
+  color: #e2e8f0;
+}
+
+/* 1. TEXTE SICHTBAR MACHEN (Brute Force Fix) */
+/* Wir zwingen alle wichtigen Texte auf Weiß/Hellgrau */
+body.dark-mode p, 
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode a,
+body.dark-mode .project-title,
+body.dark-mode .experience-sub-title,
+body.dark-mode .nav-links a,
+body.dark-mode .logo {
+  color: #f1f5f9 !important; /* !important überschreibt hartnäckige schwarze Styles */
+}
+
+/* Ausnahme: Links in Texten sollen Blau bleiben (aber heller) */
+body.dark-mode a {
+    color: #60a5fa !important;
+}
+/* Ausnahme: Navigation Links weiß lassen, nicht blau */
+body.dark-mode .nav-links a {
+    color: #f1f5f9 !important;
+}
+
+/* 2. KARTEN & CONTAINER DUNKEL MACHEN */
+/* Damit weiße Schrift auf dunklem Grund lesbar ist */
+body.dark-mode .details-container,
+body.dark-mode .contact-info-upper-container,
+body.dark-mode .about-text-container,
+body.dark-mode .achievements-box,
+body.dark-mode .modal-content,
+body.dark-mode #tech-stack,
+body.dark-mode .gallery-item p, /* Auch die Bildunterschriften */
+body.dark-mode .glass-card {
+  background: rgba(0, 0, 0, 0.75) !important; /* Dunkel-Transparent */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+  color: #e2e8f0 !important;
+}
+
+/* 3. BUTTONS ANPASSEN */
+body.dark-mode .btn-color-1, 
+body.dark-mode .btn-color-2 {
+  border-color: #f1f5f9;
+  color: #f1f5f9 !important;
+}
+body.dark-mode .btn-color-1:hover,
+body.dark-mode .btn-color-2:hover {
+  background: #f1f5f9;
+  color: #0f172a !important; /* Text wird schwarz beim Hover */
+}
+
+/* 4. SPEZIALFALL: "MERCURY" INFO BOX (Die wir oben im JS geändert haben) */
+.info-box {
+    /* Styles für LIGHT MODE (Original) */
+    font-size: 1rem;
+    color: rgb(85, 85, 85);
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid rgb(53, 53, 53);
+    margin-top: 1rem;
+    text-align: left;
+}
+
+/* Styles für DARK MODE (Automatisch) */
+body.dark-mode .info-box {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #e2e8f0 !important;
+    border-left: 4px solid #e2e8f0;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* 5. ICONS & BILDER */
+/* GitHub & Unreal Logos invertieren (Schwarz -> Weiß) */
+body.dark-mode .icon,
+body.dark-mode .hamburger-icon span,
+body.dark-mode .slide img[alt="GitHub"],
+body.dark-mode .slide img[alt="Unreal"] {
+  filter: invert(1);
+}
+
+/* 6. SONNE / MOND TOGGLE */
+.sun-icon { display: none; }
+.moon-icon { display: block; }
+body.dark-mode .moon-icon { display: none !important; }
+body.dark-mode .sun-icon { display: block !important; }
+
+/* 7. TITEL GRADIENT HELLER MACHEN */
+body.dark-mode .title {
+  background: linear-gradient(135deg, #93c5fd 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Fallback Farbe, falls Gradient nicht lädt */
+  color: #fff !important; 
 }

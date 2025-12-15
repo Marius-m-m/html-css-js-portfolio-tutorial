@@ -178,18 +178,9 @@ achievements: [
               <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="max-width: 100%; height: auto; display: block; transform-origin: top center; margin-top: 20px;" />
           </div>
           
-          <p style="
-              font-size: 1rem; 
-              color: rgb(85, 85, 85); 
-              background: #f9f9f9; 
-              padding: 1.5rem; 
-              border-radius: 8px; 
-              border-left: 4px solid rgb(53, 53, 53); 
-              margin-top: 1rem; 
-              text-align: left;">
+       <p class="info-box">
               Dieser Behavior Tree zeigt die komplexe Entscheidungslogik der Gegner-KI, von der Zielsuche bis zum Nahkampf-Angriff.
           </p>
-      </div>
     `,
     gallery: [
       {

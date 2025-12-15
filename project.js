@@ -24,7 +24,7 @@ const projectDataPage = {
       </div>
       <div class="project-context-section">
         <h3>FLOAT</h3>
-        <p>FLOAT connects entertainment with medical progress. In this Mixed Reality puzzle game, players interact using a wearable bracelet from Myomod. The gameplay sessions generate valuable muscle data, directly contributing to the improvement of arm prosthetic.</p>
+        <p>FLOAT utilizes VR Hand Tracking for immersive puzzle gameplay to gather medical data. By wearing the Myomod bracelet during play, users generate muscle data without extra effort, directly contributing to the development of better arm prosthetics.</p>
       </div>
     `,
     images: ["./assets/project-1.1.jpg"], 
@@ -109,31 +109,32 @@ achievements: [
           <h3>My Role</h3>
           <ul>
             <li>- Gameplay Programmer</li>
-            <li>- UI Implementation</li>
-            <li>- Sound Integration</li>
           </ul>
         </div>
       </div>
       <div class="project-context-section">
-        <h3>The Context</h3>
-        <p>Placeholder text for Neo Tokyo overview.</p>
+        <h3>NEO TOKYO</h3>
+        <p>NEO TOKYO is an endless VR wave shooter set in a stylized cyberpunk metropolis. Players defend against increasingly difficult swarms of police drones, utilizing a strategic shop system between rounds to upgrade weapons and stats for infinite progression..</p>
       </div>
     `,
-    images: ["./assets/project-2.png"],
+    images: ["./assets/project2.1.png"],
     
     gallery: [
       {
-        src: "./assets/project-2.png",
-        caption: "Placeholder description for the Neo Tokyo gameplay screenshot."
+        src: "./assets/project2.2.mp4",
+      },
+    ],
+achievements: [
+      {
+        text: "Exhibitor: Game Connect 2025 - Bayern meets Hessen ",
+        link: "https://events.games-bavaria.com/event/%F0%9F%8E%AE-hessen-meets-bayern-game-connect-2025/"
       },
       {
-        src: "./assets/project-2.png",
-        caption: "Placeholder description explaining the neon shader effects."
+        text: "Exhibitor: HNU Werkschau",
       },
       {
-        src: "./assets/project-2.png",
-        caption: "Placeholder description for the character controller logic."
-      }
+        text: "Winner: 2. HNU Game Jam",
+      },
     ]
   },
 

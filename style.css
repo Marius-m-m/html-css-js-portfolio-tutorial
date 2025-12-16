@@ -1230,3 +1230,59 @@ body.dark-mode .gallery-item p {
     color: #a3a3a3 !important;          /* Leichtes Grau für den Text (sieht edler aus) */
     margin-top: 0;
 }
+/* --- FLOAT SPEZIAL GALERIE (Nur für Float!) --- */
+.gallery-images.float-grid-mode {
+  display: grid;
+  /* Columns: Mindestens 350px breit, sonst Umbruch */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 2rem; /* Etwas mehr Platz zwischen den Kacheln */
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  align-items: stretch; /* WICHTIG: Zwingt alle Boxen in einer Zeile auf die gleiche Höhe */
+}
+
+/* Styling für die Items IN der Float-Galerie */
+.gallery-images.float-grid-mode .gallery-item {
+  width: 100%;
+  height: 100%; /* Füllt die Grid-Zelle komplett aus */
+  display: flex; /* Aktiviert Flexbox für das Item selbst */
+  flex-direction: column; /* Ordnet Video und Text untereinander an */
+  justify-content: flex-start; /* Inhalt oben bündig halten */
+}
+
+.gallery-images.float-grid-mode .gallery-item video,
+.gallery-images.float-grid-mode .gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 0.75rem; /* Abstand zum Text vereinheitlichen */
+  flex-shrink: 0; /* Verhindert, dass das Video gequetscht wird */
+}
+
+/* Text in der Float-Galerie */
+.gallery-images.float-grid-mode .gallery-item p {
+  font-size: 0.95rem;
+  color: rgb(85, 85, 85);
+  background: transparent;
+  padding: 0;
+  border: none;
+  margin-top: 0;
+  line-height: 1.5;
+  /* Optional: Damit Texte visuell gleich wirken, könntest du hier auch eine min-height setzen, 
+     aber Flexbox regelt das Layout meist besser. */
+}
+
+/* Dark Mode Anpassung für den Text */
+body.dark-mode .gallery-images.float-grid-mode .gallery-item p {
+    color: #a3a3a3 !important;
+}
+/* ... dein bestehender Code ... */
+
+/* Zwingt den Text in ALLEN Galerien (auch in der neuen Grid-Ansicht) im Dark Mode auf Weiß */
+body.dark-mode .gallery-item p,
+body.dark-mode .gallery-images.float-grid-mode .gallery-item p {
+    color: #f1f5f9 !important;
+}

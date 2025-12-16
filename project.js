@@ -32,19 +32,19 @@ const projectDataPage = {
     gallery: [
       {
         src: "./assets/Walk.mp4",
-        caption: "Locomotion Feedback: Dust particles triggered via Animation Events to ground the character's movement."
+        caption: "Footstep VFX Spawner Triggered by movement. Applies random rotation & scale to meshes to create organic variety."
       },
       {
         src: "./assets/Butterfly.mp4",
-        caption: "Ambient Life: Particle-based butterflies adding vitality to the environment using randomized flight paths."
+        caption: "Interactive Butterfly Swarm Tech: Reactive ambient particles that flee from player input (Hand-Collider). Flight animation is handled via shader based vertex displacement on simple planes to maximize performance while maintaining gameplay interactivity."
       },
       {
         src: "./assets/Fireworks.mp4",
-        caption: "Stylized Fireworks: A multi-stage particle system utilizing sub-emitters, trail renderers, and color gradients."
+        caption: "Event Driven Firework System Tech: A multi stage system where a leader particle drives secondary emitters. Uses event payloads to pass position and color data from the rocket to the trails and explosion, ensuring synchronized timing and visual consistency without hardcoded values."
       },
        {
         src: "./assets/Fish.mp4",
-        caption: "Aquatic Ambience: Schools of fish implemented to populate water bodies and add depth to the scene."
+        caption: "Vertex Animated Fish Swarm Tech: The swimming motion is purely mathematical (Vertex Displacement Shader) eliminating the need for expensive skeletal rigs. Movement is driven by Niagara attraction forces for organic flow."
       }
     ],
 achievements: [
@@ -145,7 +145,6 @@ achievements: [
   "Mercury": {
     title: "Mercury",
     trailerUrl: "./assets/Trailer_Mercury.mp4",
-    
     text: `
       <div class="project-meta-grid">
         <div class="meta-column">
@@ -171,37 +170,42 @@ achievements: [
         <p>MERCURY is a high-octane VR Mecha Brawler designed exclusively for hand tracking. It stands as the first game of its kind, allowing players to pilot a giant mech using intuitive physical gestures. The project focuses on immersive, fast-paced close-quarters combat without the need for controllers.</p>
       </div>
 
-      <div class="glass-card" style="padding: 1rem; margin-top: 2rem;">
+      <div style="margin-top: 2rem;">
           <h3 style="margin-bottom: 0.5rem;">AI Behavior Tree Logic</h3>
           
-          <div id="bt-container" style="display: flex; justify-content: center; align-items: flex-start; overflow: hidden; border-radius: 12px; height: 500px; border: 1px solid rgba(255,255,255,0.2); cursor: grab; background: #1a1a1a;">
-              <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="max-width: 100%; height: auto; display: block; transform-origin: top center; margin-top: 20px;" />
+          <div id="bt-container" style="display: flex; justify-content: center; align-items: center; overflow: hidden; border-radius: 12px; height: 500px; cursor: grab; border: 1px solid rgba(255,255,255,0.2); background: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+              
+              <img id="bt-image" src="./assets/bt-full.png" alt="Unreal Engine Behavior Tree" style="max-width: 100%; max-height: 100%; width: auto; height: auto; display: block; transform-origin: center center;" />
           </div>
           
-       <p class="info-box">
-              Dieser Behavior Tree zeigt die komplexe Entscheidungslogik der Gegner-KI, von der Zielsuche bis zum Nahkampf-Angriff.
+          <p style="margin-top: 1rem;">
+              Enemy AI Architecture Tech: Blackboard driven Behavior Tree. Manages the complete decision making hierarchy of the enemy Mech, handling state transitions between patrolling, target acquisition, and melee combat engagement.
           </p>
+      </div>
     `,
+
+// ...
     gallery: [
       {
         // WICHTIG: Ich habe /blueprint/ zu /render/ geändert, damit das Embed funktioniert!
         src: "https://blueprintue.com/render/lrxabwo3/",
-        caption: "Movement Logic: Calculates velocity and blends animations.",
+        caption: "Hybrid Physics Reaction System Tech: Applies localized impulses to hit bones and simulates physics below the hips for realistic impact staggering. Includes a custom recovery logic that monitors pose stability in Tick and blends back to kinematic animation once the actor is balanced.",
         isBlueprint: true 
       },
       {
         src: "https://blueprintue.com/render/435xr683/",
-        caption: "Combat System: Hit detection and damage calculation.",
+        caption: "Modular Health & Damage Component Tech: A universal Actor Component designed for high reusability. Decouples damage logic from specific classes, allowing any actor to process health events and destruction simply by attaching this component.",
         isBlueprint: true
-      },
+      }
+    ],
+    achievements: [
       {
-        src: "./assets/project-3.png",
-        caption: "Resulting visual effect in-game."
+        text: "Participant: Meta Horizon Start Developer Competition",
+        link: "https://devpost.com/software/mercury-05i6ty?ref_content=my-projects-tab&ref_feature=my_projects"
       }
     ]
   }
 };
-
 function getQueryProject() {
   const params = new URLSearchParams(window.location.search);
   return params.get('project');

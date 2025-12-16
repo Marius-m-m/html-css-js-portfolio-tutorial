@@ -1153,8 +1153,7 @@ body.dark-mode .contact-info-upper-container,
 body.dark-mode .about-text-container,
 body.dark-mode .achievements-box,
 body.dark-mode .modal-content,
-body.dark-mode #tech-stack,
-body.dark-mode .gallery-item p, /* Auch die Bildunterschriften */
+body.dark-mode #tech-stack, /* Auch die Bildunterschriften */
 body.dark-mode .glass-card {
   background: rgba(0, 0, 0, 0.75) !important; /* Dunkel-Transparent */
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1220,4 +1219,14 @@ body.dark-mode .title {
   -webkit-text-fill-color: transparent;
   /* Fallback Farbe, falls Gradient nicht lädt */
   color: #fff !important; 
+}
+/* --- FIX FÜR GALERIE TEXT IM DARK MODE --- */
+/* Hintergrund entfernen, aber Text weiß machen */
+body.dark-mode .gallery-item p {
+    background: transparent !important; /* Kein Kasten */
+    border: none !important;            /* Kein Rand */
+    box-shadow: none !important;        /* Kein Schatten */
+    padding: 0.5rem 0 0 0 !important;   /* Padding reduzieren */
+    color: #a3a3a3 !important;          /* Leichtes Grau für den Text (sieht edler aus) */
+    margin-top: 0;
 }

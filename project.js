@@ -16,9 +16,9 @@ const projectDataPage = {
         <div class="meta-column">
           <h3>My Role</h3>
           <ul>
-            <li>- Programmer</li>
-            <li>- Visual Effects</li>
-            <li>- Version Control & Collaboration</li>
+            <li>- Gameplay Programming</li>
+            <li>- VFX Implementation</li>
+            <li>- Repository Management & Tools</li>
           </ul>
         </div>
       </div>
@@ -32,19 +32,19 @@ const projectDataPage = {
     gallery: [
       {
         src: "./assets/Walk.mp4",
-        caption: "Placeholder text for Image 1. Explain what is happening in this specific screenshot or blueprint."
+        caption: "Locomotion Feedback: Dust particles triggered via Animation Events to ground the character's movement."
       },
       {
         src: "./assets/Butterfly.mp4",
-        caption: "Placeholder text for Image 2. Maybe explain a specific code snippet shown above."
+        caption: "Ambient Life: Particle-based butterflies adding vitality to the environment using randomized flight paths."
       },
       {
         src: "./assets/Fireworks.mp4",
-        caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
+        caption: "Stylized Fireworks: A multi-stage particle system utilizing sub-emitters, trail renderers, and color gradients."
       },
        {
         src: "./assets/Fish.mp4",
-        caption: "Placeholder text for Image 3. Detail regarding the level design or lighting."
+        caption: "Aquatic Ambience: Schools of fish implemented to populate water bodies and add depth to the scene."
       }
     ],
 achievements: [

@@ -48,7 +48,6 @@ const projectDataPage = {
       }
     ],
 achievements: [
-      // --- MIT LINK (Werden blau/unterstrichen) ---
       {
         text: "Winner: Varjo Academic Giveaway Campaign",
         link: "https://www.linkedin.com/feed/update/urn:li:activity:7334126257871175680/"
@@ -184,10 +183,8 @@ achievements: [
       </div>
     `,
 
-// ...
     gallery: [
       {
-        // WICHTIG: Ich habe /blueprint/ zu /render/ geändert, damit das Embed funktioniert!
         src: "https://blueprintue.com/render/lrxabwo3/",
         caption: "Hybrid Physics Reaction System Tech: Applies localized impulses to hit bones and simulates physics below the hips for realistic impact staggering. Includes a custom recovery logic that monitors pose stability in Tick and blends back to kinematic animation once the actor is balanced.",
         isBlueprint: true 
@@ -376,7 +373,6 @@ function populateProjectPage(id) {
   }
 }
 
-// --- Zoom Logik ---
 function initPanzoom() {
   const elem = document.getElementById('bt-image');
   const container = document.getElementById('bt-container');
@@ -397,7 +393,6 @@ function initPanzoom() {
   }
 }
 
-// --- Tab Logik ---
 function setupTabs() {
   const tabButtons = document.querySelectorAll('.modal-tabs .tab');
   tabButtons.forEach(btn => {
@@ -414,7 +409,6 @@ function setupTabs() {
   });
 }
 
-// --- Navigation Logik ---
 function navigateToSection(sectionId) {
   if (window.opener && !window.opener.closed) {
     const target = sectionId ? `index.html#${sectionId}` : 'index.html';

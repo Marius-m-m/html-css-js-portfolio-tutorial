@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -265,13 +264,11 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  
   background: rgba(255, 255, 255, 0.6); 
   backdrop-filter: blur(12px);         
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5); 
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  
   border-radius: 2rem;
   text-align: center;
   display: flex;
@@ -323,7 +320,6 @@ section {
   text-align: center;
   font-size: 1.1rem;
   padding: 2rem; 
-  
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(5px);
   border-radius: 20px;
@@ -342,12 +338,10 @@ section {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  
   margin: 2rem auto;
   padding: 0.5rem;
   flex-wrap: wrap;
@@ -556,10 +550,7 @@ html {
     height: 60px;
     width: auto;
     object-fit: contain;
-    
-    /* Jetzt immer bunt und volle Deckkraft */
     filter: grayscale(0%) opacity(1); 
-    
     transition: all 0.3s ease;
     cursor: pointer;
 }
@@ -738,7 +729,6 @@ html {
     border-radius: 8px;
     transition: all 0.2s ease;
 }
-/* --- ACHIEVEMENTS DESIGN --- */
 .achievements-box {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(12px);
@@ -755,7 +745,6 @@ html {
     text-align: left;
 }
 
-/* Basis-Style für ALLE Einträge (ob Link oder nicht) */
 .achievements-list li {
     font-size: 1.1rem;
     padding: 10px 0;
@@ -763,63 +752,57 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: rgb(60, 60, 60); /* Standard Textfarbe */
+    color: rgb(60, 60, 60); 
 }
 
-/* Das Häkchen davor */
 .achievements-list li::before {
     content: ''; 
     font-size: 1.2rem;
-    flex-shrink: 0; /* Verhindert, dass das Icon gequetscht wird */
+    flex-shrink: 0; 
 }
 
-/* --- SPEZIAL-STYLE FÜR LINKS --- */
 .achievements-list a.achievement-link {
     text-decoration: none;
-    color: #3b82f6; /* Dein Blau -> Zeigt sofort "Ich bin ein Link" */
+    color: #3b82f6; 
     font-weight: 500;
-    border-bottom: 1px dashed rgba(59, 130, 246, 0.4); /* Gestrichelte Linie */
+    border-bottom: 1px dashed rgba(59, 130, 246, 0.4); 
     transition: all 0.2s ease;
     display: inline-flex;
     align-items: center;
     gap: 5px;
 }
 
-/* Der kleine Pfeil hinter dem Link */
 .achievements-list a.achievement-link::after {
-    content: '↗'; /* Pfeil nach oben rechts */
+    content: '↗'; 
     font-size: 0.85em;
     opacity: 0.6;
 }
 
-/* Hover Effekt für Links */
 .achievements-list a.achievement-link:hover {
-    color: #1d4ed8; /* Dunkleres Blau beim Drüberfahren */
-    border-bottom-style: solid; /* Linie wird durchgezogen */
-    transform: translateX(3px); /* Bewegt sich leicht */
+    color: #1d4ed8; 
+    border-bottom-style: solid; 
+    transform: translateX(3px); 
 }
 .achievements-list a.achievement-link:hover::after {
     opacity: 1;
 }
-/* --- MODAL (POP-UP) STYLES --- */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dunkler Hintergrund */
+  background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  pointer-events: none; /* Klicks gehen durch, wenn unsichtbar */
+  pointer-events: none; 
   transition: opacity 0.3s ease;
   z-index: 10000;
   backdrop-filter: blur(5px);
 }
 
-/* Wenn das Modal "offen" ist (wird per JS gesteuert, falls du es nutzt) */
 .modal[aria-hidden="false"] {
   opacity: 1;
   pointer-events: all;
@@ -837,7 +820,6 @@ html {
   box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
 
-/* Das "x" oben rechts im Fenster */
 .modal-close {
   position: absolute;
   top: 1rem;
@@ -851,14 +833,13 @@ html {
 }
 
 .modal-close:hover {
-  color: #ef4444; /* Rot beim Drüberfahren */
+  color: #ef4444; 
 }
-/* --- DARK MODE BUTTON --- */
 #theme-toggle {
   position: fixed;
   top: 20px;
-  left: 20px; /* Oben links */
-  z-index: 10001; /* Über der Navigation */
+  left: 20px; 
+  z-index: 10001; 
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0,0,0,0.1);
   border-radius: 50%;
@@ -880,13 +861,11 @@ html {
 
 
 body.dark-mode {
-  /* Dunkler Verlauf statt heller Verlauf */
   background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e293b);
   background-size: 400% 400%;
-  color: #e2e8f0; /* Heller Text */
+  color: #e2e8f0; 
 }
 
-/* Texte im Dark Mode */
 body.dark-mode p, 
 body.dark-mode h1, 
 body.dark-mode h2, 
@@ -899,7 +878,6 @@ body.dark-mode .achievements-list li {
   color: #f1f5f9;
 }
 
-/* Glaseffekte dunkel machen */
 body.dark-mode .details-container,
 body.dark-mode .contact-info-upper-container,
 body.dark-mode .about-text-container,
@@ -908,12 +886,11 @@ body.dark-mode .modal-content,
 body.dark-mode #tech-stack,
 body.dark-mode .gallery-item p,
 body.dark-mode .glass-card p {
-  background: rgba(0, 0, 0, 0.6); /* Dunkles Glas */
+  background: rgba(0, 0, 0, 0.6); 
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #e2e8f0;
 }
 
-/* Buttons im Dark Mode anpassen */
 body.dark-mode .btn-color-1, 
 body.dark-mode .btn-color-2 {
   border-color: #f1f5f9;
@@ -925,38 +902,30 @@ body.dark-mode .btn-color-2:hover {
   color: #0f172a;
 }
 
-/* WICHTIG: Icons invertieren (aus Schwarz wird Weiß) */
 body.dark-mode .icon,
 body.dark-mode .hamburger-icon span {
   filter: invert(1);
 }
 
-/* Titel-Gradient anpassen für dunklen Hintergrund */
 body.dark-mode .title {
   background: linear-gradient(135deg, #60a5fa 0%, #c084fc 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* --- FIX FÜR PROJECT SCOPE & MY ROLE --- */
 
-/* Überschriften (Project Scope, My Role) weiß machen */
 body.dark-mode .meta-column h3 {
   color: #f1f5f9;
 }
 
-/* Die Listenpunkte (- Programmer, - Team of 6, etc.) hellgrau machen */
 body.dark-mode .meta-column li {
   color: #e2e8f0;
 }
 
-/* Die Linie unter dem Bereich heller machen */
 body.dark-mode .project-meta-grid {
   border-bottom-color: rgba(255, 255, 255, 0.2);
 }
-/* --- DAS UMSCHALTEN (Neue Logik) --- */
 
-/* Standard (Light Mode): Sonne aus, Mond an */
 .sun-icon {
     display: none;
 }
@@ -964,22 +933,18 @@ body.dark-mode .project-meta-grid {
     display: block;
 }
 
-/* Wenn Dark Mode AN ist: Mond verstecken */
 body.dark-mode .moon-icon {
   display: none !important;
 }
 
-/* Wenn Dark Mode AN ist: Sonne anzeigen */
 body.dark-mode .sun-icon {
   display: block !important;
 }
-/* In style.css (ca. Zeile 480) */
 
 .trailer-container {
   width: 100%;
 }
 
-/* WICHTIG: Gilt jetzt für iframe UND video */
 .trailer-container iframe,
 .trailer-container video {
   width: 100%;
@@ -987,32 +952,25 @@ body.dark-mode .sun-icon {
   height: auto;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  background: black; /* Sieht besser aus, falls Video lädt */
+  background: black; 
   border: none;
   display: block;
 }
-/* --- FIX FÜR SLIDER FARBEN --- */
 
-/* Standardmäßig nichts invertieren, ABER: */
-/* GitHub ist schwarz -> muss weiß werden */
 body.dark-mode .slide img[alt="GitHub"] {
   filter: invert(1);
 }
 
-/* Unreal Engine ist schwarz -> muss weiß werden */
 body.dark-mode .slide img[alt="Unreal"] {
   filter: invert(1);
 }
 
-/* Falls du X/Twitter dabei hättest, müsste das auch hier rein */
-/* --- NEUE GALERIE (GRID LAYOUT) --- */
 .gallery-images {
   display: grid;
-  /* Erzeugt automatisch Spalten: Min 350px breit, sonst 2 nebeneinander */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 1.5rem; /* Abstand zwischen den Videos */
+  gap: 1.5rem; 
   width: 100%;
-  max-width: 1000px; /* Begrenzt die Gesamtbreite */
+  max-width: 1000px; 
   margin: 2rem auto 0 auto;
 }
 
@@ -1022,29 +980,26 @@ body.dark-mode .slide img[alt="Unreal"] {
   flex-direction: column;
 }
 
-/* Videos und Bilder einheitlich machen */
 .gallery-item video, 
 .gallery-item img {
   width: 100%;
-  aspect-ratio: 16 / 9; /* Erzwingt, dass alle Videos das gleiche Format haben */
-  object-fit: cover;    /* Schneidet Ränder ab, damit nichts verzerrt wird */
+  aspect-ratio: 16 / 9; 
+  object-fit: cover;    
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Dezentere Schatten für Clean Look */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
   margin-bottom: 0.5rem;
   background: black;
 }
 
-/* Beschriftung unter den Videos kleiner und cleaner */
 .gallery-item p {
   font-size: 0.9rem;
   color: rgb(100, 100, 100);
-  background: transparent; /* Kein grauer Kasten mehr */
+  background: transparent; 
   padding: 0.5rem 0 0 0;
-  border: none; /* Kein Strich an der Seite */
+  border: none; 
   margin-top: 0;
 }
-/* --- STANDARD GALERIE (Neo Tokyo, Mercury, etc.) --- */
-/* Bleibt wie früher: Groß und untereinander */
+
 .gallery-images {
   display: flex;
   flex-direction: column;
@@ -1054,8 +1009,6 @@ body.dark-mode .slide img[alt="Unreal"] {
   margin-top: 2rem;
 }
 
-/* --- FLOAT SPEZIAL GALERIE (Nur für Float!) --- */
-/* Hier aktivieren wir das Grid (2 nebeneinander) */
 .gallery-images.float-grid-mode {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
@@ -1064,7 +1017,6 @@ body.dark-mode .slide img[alt="Unreal"] {
   margin: 2rem auto;
 }
 
-/* Styling für die Items IN der Float-Galerie */
 .gallery-images.float-grid-mode .gallery-item {
   width: 100%;
 }
@@ -1079,7 +1031,6 @@ body.dark-mode .slide img[alt="Unreal"] {
   margin-bottom: 0.5rem;
 }
 
-/* Text in der Float-Galerie cleaner machen */
 .gallery-images.float-grid-mode .gallery-item p {
   font-size: 0.9rem;
   color: rgb(100, 100, 100);
@@ -1088,14 +1039,13 @@ body.dark-mode .slide img[alt="Unreal"] {
   border: none;
   margin-top: 0;
 }
+
 body.dark-mode {
-  /* Tiefschwarz mit einem Hauch von dunklem Violett */
   background: linear-gradient(-45deg, #020202, #0f0b15, #16121d, #020202);
   background-size: 400% 400%;
   color: #e2e8f0;
 }
 
-/* Macht die Karten im Dark Mode dunkler und lesbarer */
 body.dark-mode .details-container,
 body.dark-mode .contact-info-upper-container,
 body.dark-mode .about-text-container,
@@ -1103,23 +1053,16 @@ body.dark-mode .achievements-box,
 body.dark-mode .modal-content,
 body.dark-mode #tech-stack,
 body.dark-mode .gallery-item p {
-  /* Stärkeres Schwarz für besseren Kontrast zur Schrift */
   background: rgba(0, 0, 0, 0.75); 
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
-/* ========================================= */
-/* DARK MODE - COMPLETE OVERHAUL       */
-/* ========================================= */
 
 body.dark-mode {
-  /* Dein Deep Space Hintergrund */
   background: linear-gradient(-45deg, #020202, #0f0b15, #16121d, #020202);
   background-size: 400% 400%;
   color: #e2e8f0;
 }
 
-/* 1. TEXTE SICHTBAR MACHEN (Brute Force Fix) */
-/* Wir zwingen alle wichtigen Texte auf Weiß/Hellgrau */
 body.dark-mode p, 
 body.dark-mode h1, 
 body.dark-mode h2, 
@@ -1134,34 +1077,29 @@ body.dark-mode .project-title,
 body.dark-mode .experience-sub-title,
 body.dark-mode .nav-links a,
 body.dark-mode .logo {
-  color: #f1f5f9 !important; /* !important überschreibt hartnäckige schwarze Styles */
+  color: #f1f5f9 !important; 
 }
 
-/* Ausnahme: Links in Texten sollen Blau bleiben (aber heller) */
 body.dark-mode a {
     color: #60a5fa !important;
 }
-/* Ausnahme: Navigation Links weiß lassen, nicht blau */
 body.dark-mode .nav-links a {
     color: #f1f5f9 !important;
 }
 
-/* 2. KARTEN & CONTAINER DUNKEL MACHEN */
-/* Damit weiße Schrift auf dunklem Grund lesbar ist */
 body.dark-mode .details-container,
 body.dark-mode .contact-info-upper-container,
 body.dark-mode .about-text-container,
 body.dark-mode .achievements-box,
 body.dark-mode .modal-content,
-body.dark-mode #tech-stack, /* Auch die Bildunterschriften */
+body.dark-mode #tech-stack, 
 body.dark-mode .glass-card {
-  background: rgba(0, 0, 0, 0.75) !important; /* Dunkel-Transparent */
+  background: rgba(0, 0, 0, 0.75) !important; 
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
   color: #e2e8f0 !important;
 }
 
-/* 3. BUTTONS ANPASSEN */
 body.dark-mode .btn-color-1, 
 body.dark-mode .btn-color-2 {
   border-color: #f1f5f9;
@@ -1170,12 +1108,10 @@ body.dark-mode .btn-color-2 {
 body.dark-mode .btn-color-1:hover,
 body.dark-mode .btn-color-2:hover {
   background: #f1f5f9;
-  color: #0f172a !important; /* Text wird schwarz beim Hover */
+  color: #0f172a !important; 
 }
 
-/* 4. SPEZIALFALL: "MERCURY" INFO BOX (Die wir oben im JS geändert haben) */
 .info-box {
-    /* Styles für LIGHT MODE (Original) */
     font-size: 1rem;
     color: rgb(85, 85, 85);
     background: #f9f9f9;
@@ -1186,7 +1122,6 @@ body.dark-mode .btn-color-2:hover {
     text-align: left;
 }
 
-/* Styles für DARK MODE (Automatisch) */
 body.dark-mode .info-box {
     background: rgba(255, 255, 255, 0.05) !important;
     color: #e2e8f0 !important;
@@ -1196,8 +1131,6 @@ body.dark-mode .info-box {
     border-bottom: none;
 }
 
-/* 5. ICONS & BILDER */
-/* GitHub & Unreal Logos invertieren (Schwarz -> Weiß) */
 body.dark-mode .icon,
 body.dark-mode .hamburger-icon span,
 body.dark-mode .slide img[alt="GitHub"],
@@ -1205,50 +1138,42 @@ body.dark-mode .slide img[alt="Unreal"] {
   filter: invert(1);
 }
 
-/* 6. SONNE / MOND TOGGLE */
 .sun-icon { display: none; }
 .moon-icon { display: block; }
 body.dark-mode .moon-icon { display: none !important; }
 body.dark-mode .sun-icon { display: block !important; }
 
-/* 7. TITEL GRADIENT HELLER MACHEN */
 body.dark-mode .title {
   background: linear-gradient(135deg, #93c5fd 0%, #c4b5fd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  /* Fallback Farbe, falls Gradient nicht lädt */
   color: #fff !important; 
 }
-/* --- FIX FÜR GALERIE TEXT IM DARK MODE --- */
-/* Hintergrund entfernen, aber Text weiß machen */
 body.dark-mode .gallery-item p {
-    background: transparent !important; /* Kein Kasten */
-    border: none !important;            /* Kein Rand */
-    box-shadow: none !important;        /* Kein Schatten */
-    padding: 0.5rem 0 0 0 !important;   /* Padding reduzieren */
-    color: #a3a3a3 !important;          /* Leichtes Grau für den Text (sieht edler aus) */
+    background: transparent !important; 
+    border: none !important;            
+    box-shadow: none !important;        
+    padding: 0.5rem 0 0 0 !important;   
+    color: #a3a3a3 !important;          
     margin-top: 0;
 }
-/* --- FLOAT SPEZIAL GALERIE (Nur für Float!) --- */
 .gallery-images.float-grid-mode {
   display: grid;
-  /* Columns: Mindestens 350px breit, sonst Umbruch */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-  gap: 2rem; /* Etwas mehr Platz zwischen den Kacheln */
+  gap: 2rem; 
   width: 100%;
   max-width: 1200px;
   margin: 2rem auto;
-  align-items: stretch; /* WICHTIG: Zwingt alle Boxen in einer Zeile auf die gleiche Höhe */
+  align-items: stretch; 
 }
 
-/* Styling für die Items IN der Float-Galerie */
 .gallery-images.float-grid-mode .gallery-item {
   width: 100%;
-  height: 100%; /* Füllt die Grid-Zelle komplett aus */
-  display: flex; /* Aktiviert Flexbox für das Item selbst */
-  flex-direction: column; /* Ordnet Video und Text untereinander an */
-  justify-content: flex-start; /* Inhalt oben bündig halten */
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; 
 }
 
 .gallery-images.float-grid-mode .gallery-item video,
@@ -1258,11 +1183,10 @@ body.dark-mode .gallery-item p {
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  margin-bottom: 0.75rem; /* Abstand zum Text vereinheitlichen */
-  flex-shrink: 0; /* Verhindert, dass das Video gequetscht wird */
+  margin-bottom: 0.75rem; 
+  flex-shrink: 0; 
 }
 
-/* Text in der Float-Galerie */
 .gallery-images.float-grid-mode .gallery-item p {
   font-size: 0.95rem;
   color: rgb(85, 85, 85);
@@ -1271,17 +1195,12 @@ body.dark-mode .gallery-item p {
   border: none;
   margin-top: 0;
   line-height: 1.5;
-  /* Optional: Damit Texte visuell gleich wirken, könntest du hier auch eine min-height setzen, 
-     aber Flexbox regelt das Layout meist besser. */
 }
 
-/* Dark Mode Anpassung für den Text */
 body.dark-mode .gallery-images.float-grid-mode .gallery-item p {
     color: #a3a3a3 !important;
 }
-/* ... dein bestehender Code ... */
 
-/* Zwingt den Text in ALLEN Galerien (auch in der neuen Grid-Ansicht) im Dark Mode auf Weiß */
 body.dark-mode .gallery-item p,
 body.dark-mode .gallery-images.float-grid-mode .gallery-item p {
     color: #f1f5f9 !important;

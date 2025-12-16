@@ -1,9 +1,8 @@
-// --- DARK MODE LOGIC ---
+
 function toggleTheme() {
   const body = document.body;
   body.classList.toggle("dark-mode");
 
-  // Speichern der Entscheidung im Browser
   if (body.classList.contains("dark-mode")) {
     localStorage.setItem("theme", "dark");
   } else {
@@ -11,7 +10,6 @@ function toggleTheme() {
   }
 }
 
-// Beim Laden der Seite prüfen, was gespeichert wurde
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
@@ -19,7 +17,6 @@ function loadTheme() {
   }
 }
 
-// Funktion sofort ausführen
 loadTheme();
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");

@@ -235,28 +235,22 @@ function populateProjectPage(id) {
     return;
   }
 
-// --- TITEL & TRAILER LOGIK (NEU) ---
   titleEl.textContent = data.title;
   
-  // Container holen (statt dem alten iframe)
   const trailerContainer = document.getElementById('trailer-container');
   
-  // Container erst leeren (falls vorher was drin war)
   if (trailerContainer) {
     trailerContainer.innerHTML = ''; 
 
     if (data.trailerUrl) {
-      // FALL 1: Es ist eine MP4-Datei (Lokal)
       if (data.trailerUrl.endsWith('.mp4')) {
         const video = document.createElement('video');
         video.src = data.trailerUrl;
-        video.controls = true; // Zeigt Play/Pause/Lautstärke
-        video.autoplay = false; // Trailer nicht automatisch starten (besser für UX)
-        // video.muted = true; // Falls du Autoplay willst, muss muted=true sein
+        video.controls = true; 
+        video.autoplay = false; 
         
         trailerContainer.appendChild(video);
       } 
-      // FALL 2: Es ist YouTube (Fallback)
       else {
         const videoId = extractYouTubeId(data.trailerUrl);
         if (videoId) {
@@ -271,7 +265,6 @@ function populateProjectPage(id) {
     }
   }
 
-  // Bilder oben
   imagesEl.innerHTML = '';
   (data.images || []).forEach((src) => {
     const img = document.createElement('img');
@@ -282,37 +275,31 @@ function populateProjectPage(id) {
   
   textEl.innerHTML = data.text || '';
 
-// Galerie
+
   galleryImagesEl.innerHTML = '';
-  
-  // WICHTIG: Grid-Layout NUR für 'float' aktivieren
-  // Wir setzen die Klasse jedes Mal zurück, damit sie nicht bei anderen Projekten kleben bleibt
+
   if (id === 'float') {
     galleryImagesEl.className = 'gallery-images float-grid-mode';
   } else {
-    galleryImagesEl.className = 'gallery-images'; // Standard für alle anderen
+    galleryImagesEl.className = 'gallery-images'; 
   }
   if (data.gallery && data.gallery.length > 0) {
     data.gallery.forEach(item => {
       const itemContainer = document.createElement('div');
       itemContainer.className = 'gallery-item';
 
-      // --- NEU: VIDEO ABFRAGE START ---
-      // Prüfen, ob die Datei auf .mp4 endet
       if (item.src.endsWith('.mp4')) {
         const video = document.createElement('video');
         video.src = item.src;
         
-        // Einstellungen für automatischen Loop
         video.autoplay = true;
         video.loop = true;
-        video.muted = true;      // Muted ist PFLICHT für Autoplay in modernen Browsern
-        video.playsInline = true; // Wichtig für iOS/Mobile
-        video.controls = true;   // Zeigt Play/Pause Buttons (optional, kannst du auf false setzen)
+        video.muted = true;     
+        video.playsInline = true; 
+        video.controls = true;  
         
         itemContainer.appendChild(video);
       } 
-      // --- NEU: VIDEO ABFRAGE ENDE ---
 
       else if (item.isBlueprint) {
         const iframeContainer = document.createElement('div');
@@ -353,7 +340,6 @@ function populateProjectPage(id) {
     galleryImagesEl.innerHTML = '<p>No gallery images available.</p>';
   }
 
-  // --- HIER WAR DER FEHLER: KORRIGIERTE ACHIEVEMENTS LOGIK ---
   if (achievementsContainer && achievementsSection) {
     achievementsContainer.innerHTML = '';
     
@@ -361,7 +347,6 @@ function populateProjectPage(id) {
       data.achievements.forEach(ach => {
         const li = document.createElement('li');
         
-        // FALL 1: Es ist ein Objekt UND hat einen Link
         if (typeof ach === 'object' && ach.link) {
             const link = document.createElement('a');
             link.href = ach.link;
@@ -370,11 +355,10 @@ function populateProjectPage(id) {
             link.className = "achievement-link"; 
             li.appendChild(link);
         } 
-        // FALL 2: Es ist ein Objekt, aber ohne Link (nur Text)
         else if (typeof ach === 'object') {
             li.textContent = ach.text;
         }
-        // FALL 3: Es ist einfach nur ein Text-String (wie früher)
+
         else {
             li.textContent = ach;
         }

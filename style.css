@@ -1205,30 +1205,30 @@ body.dark-mode .gallery-item p,
 body.dark-mode .gallery-images.float-grid-mode .gallery-item p {
     color: #f1f5f9 !important;
 }
-/* Canvas Background Settings */
+
 #project-background-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Hinter dem Inhalt */
-    pointer-events: none; /* Klicks gehen durch */
-    opacity: 0; /* Standardmäßig unsichtbar */
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 1s ease;
 }
 
-/* Wenn aktiv (wird per JS gesetzt) */
+
 #project-background-canvas.active {
-    opacity: 0.6; /* Transparenz, damit Text lesbar bleibt */
+    opacity: 0.6;
 }
 
-/* Darkmode Anpassungen für den Hintergrund falls nötig */
+
 body.dark-mode #project-background-canvas {
-    opacity: 0.4; /* Etwas dezenter im Darkmode */
+    opacity: 0.4;
 }
 
-/* --- FLOAT FLOWER ANIMATION STYLES --- *//* --- FLOAT FLOWER ANIMATION STYLES --- */
+/* --- FLOAT FLOWER ANIMATION STYLES --- */
 
 #flower-container {
     position: fixed;
@@ -1564,9 +1564,9 @@ body.dark-mode #project-background-canvas {
     animation-delay: 3.5s;
 }
 
-/* Gelöscht: Grass, Ground-Leaves, Long-Leaves (Code Clean-up) */
 
-/* Keyframes - Nur die benötigten behalten */
+
+
 
 @keyframes light-ans {
     0% {
@@ -1627,7 +1627,7 @@ body.dark-mode #project-background-canvas {
 @keyframes blooming-flower {
     0% { transform: scale(0); }
 }
-/* Container linksbündig ausrichten */
+
 
 #flower-container {
 
@@ -1641,7 +1641,7 @@ body.dark-mode #project-background-canvas {
 
     height: 100%;
 
-    z-index: -1; /* Im Hintergrund bleiben */
+    z-index: -1;
 
     pointer-events: none;
 
@@ -1661,17 +1661,17 @@ body.dark-mode #project-background-canvas {
 
     align-items: flex-end;
 
-    /* ÄNDERUNG: Statt 'center' nutzen wir 'flex-start' für links */
+   
 
     justify-content: flex-start;
 
-    /* ÄNDERUNG: Etwas Abstand vom linken Rand */
+   
 
     padding-left: 10%;
 
 }
 
-/* Hintergrund transparent machen */
+
 
 .night {
 
@@ -1687,7 +1687,7 @@ body.dark-mode #project-background-canvas {
 
     height: 100%;
 
-    /* ÄNDERUNG: Hintergrund ist jetzt transparent, Filter entfernt */
+   
 
     background: transparent;
 
@@ -1705,9 +1705,9 @@ body.dark-mode #project-background-canvas {
 
 
 
-/* --- Hier folgen die Keyframes und spezifischen Klassen aus deiner flower.css --- */
 
-/* (Ich habe die Selektoren übernommen, aber body-Styles entfernt, da sie global stören würden) */
+
+
 
 
 
@@ -2036,7 +2036,7 @@ body.dark-mode #project-background-canvas {
 
     background-image: linear-gradient(to bottom, transparent, var(--dark-color) 60%);
 
-    /* Hier wurde die Standard-Eigenschaft hinzugefügt: */
+   
 
     mask-image: linear-gradient(to top, transparent 30%, #24803e 60%);
 
@@ -2116,7 +2116,7 @@ body.dark-mode #project-background-canvas {
 
     border-left: 2vmin solid #147b47;
 
-    /* Standard hinzufügen: */
+   
 
     mask-image: linear-gradient(to top, transparent 25%, #0e4e2a 50%);
 
@@ -2146,7 +2146,7 @@ body.dark-mode #project-background-canvas {
 
     background-image: linear-gradient(to bottom left, transparent, var(--dark-color) 98%), linear-gradient(to bottom right, #106e18 45%, transparent 50%, transparent);
 
-    /* Standard hinzufügen: */
+   
 
     mask-image: linear-gradient(135deg, #175f22 40%, transparent 50%, transparent);
 
@@ -2252,7 +2252,7 @@ body.dark-mode #project-background-canvas {
 
     border-left: 2vmin solid var(--c);
 
-    /* Standard hinzufügen: */
+   
 
     mask-image: linear-gradient(to top, transparent 20%, var(--dark-color));
 
@@ -2314,11 +2314,11 @@ body.dark-mode #project-background-canvas {
 @keyframes growing-grass-ans--7 { 0% { transform-origin: bottom left; transform: rotate(-10deg) scale(0); } }
 
 @keyframes growing-grass-ans--8 { 0% { transform-origin: bottom right; transform: rotate(10deg) scale(0); } }
-/* --- WOLKEN ANIMATION & STYLING --- */
 
-/* --- WOLKEN ANIMATION & STYLING --- */
 
-/* Container */
+
+
+
 #clouds {
     position: fixed;
     top: 0;
@@ -2330,7 +2330,7 @@ body.dark-mode #project-background-canvas {
     pointer-events: none;
 }
 
-/* Basis-Form der Wolke */
+
 .cloud {
     width: 350px; 
     height: 100px;
@@ -2338,14 +2338,14 @@ body.dark-mode #project-background-canvas {
     border-radius: 100px;
     position: absolute; 
     
-    /* WICHTIG: Startposition weit außerhalb des Bildschirms */
+   
     left: -600px; 
     
     opacity: 0.9; 
     box-shadow: 0 16px 40px rgba(0,0,0,0.1); 
 }
 
-/* Der linke, kleine Hügel */
+
 .cloud:before {
     content: '';
     position: absolute;
@@ -2357,7 +2357,7 @@ body.dark-mode #project-background-canvas {
     border-radius: 50%;
 }
 
-/* Der rechte, große Haupt-Hügel */
+
 .cloud:after {
     content: '';
     position: absolute;
@@ -2369,9 +2369,9 @@ body.dark-mode #project-background-canvas {
     border-radius: 50%;
 }
 
-/* --- ANIMATIONEN, GRÖSSE & VERTEILUNG --- */
 
-/* Wolke 1: Startet sofort */
+
+
 .x1 {
     top: 5%;
     animation: moveclouds 60s linear infinite; 
@@ -2380,7 +2380,7 @@ body.dark-mode #project-background-canvas {
     z-index: 2;
 }
 
-/* Wolke 2: Startet erst nach 25 Sekunden (wartet unsichtbar bei -600px) */
+
 .x2 {
     top: 28%;
     animation: moveclouds 90s linear infinite; 
@@ -2390,7 +2390,7 @@ body.dark-mode #project-background-canvas {
     z-index: 1;
 }
 
-/* Wolke 3: Startet nach 8 Sekunden */
+
 .x3 {
     top: 15%; 
     animation: moveclouds 70s linear infinite;
@@ -2400,7 +2400,7 @@ body.dark-mode #project-background-canvas {
     z-index: 3;
 }
 
-/* Wolke 4: Startet nach 45 Sekunden */
+
 .x4 {
     top: 38%; 
     animation: moveclouds 55s linear infinite; 
@@ -2409,25 +2409,25 @@ body.dark-mode #project-background-canvas {
     opacity: 0.75;
 }
 
-/* Bewegung */
+
 @keyframes moveclouds {
     0% { left: -600px; }
     100% { left: 110%; }
 }
 
-/* --- DARK MODE ANPASSUNG --- */
+
 body.dark-mode .cloud {
     background: #475569; 
     opacity: 0.5;
     box-shadow: none;
 }
-/* --- MERCURY MECH WIDGET (Unten Rechts) --- */
-/* --- MERCURY MECH WIDGET (Unten Links) --- */
+
+
 
 #mech-widget {
     position: fixed;
     bottom: 40px;
-    left: 40px;  /* HIER GEÄNDERT: Jetzt links */
+    left: 40px; 
     width: 120px;
     height: 120px;
     z-index: 50; 
@@ -2437,7 +2437,7 @@ body.dark-mode .cloud {
     align-items: center;
 }
 
-/* Äußerer Ring */
+
 .ring-outer {
     position: absolute;
     width: 100%;
@@ -2448,7 +2448,7 @@ body.dark-mode .cloud {
     opacity: 0.5;
 }
 
-/* Innerer Ring */
+
 .ring-inner {
     position: absolute;
     width: 70%;
@@ -2461,7 +2461,7 @@ body.dark-mode .cloud {
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
 }
 
-/* Kern */
+
 .core-glow {
     position: absolute;
     width: 30%;
@@ -2472,7 +2472,7 @@ body.dark-mode .cloud {
     box-shadow: 0 0 20px #00d2ff;
 }
 
-/* Satelliten */
+
 .orbital-dot {
     position: absolute;
     width: 100%;
@@ -2497,14 +2497,14 @@ body.dark-mode .cloud {
     height: 80%;
 }
 
-/* Text Label */
+
 .tech-label {
     position: absolute;
     bottom: -25px;
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
     
-    color: #000000; /* HIER GEÄNDERT: Schwarz im Light Mode */
+    color: #000000;
     
     font-weight: bold;
     letter-spacing: 2px;
@@ -2516,7 +2516,7 @@ body.dark-mode .cloud {
     animation: blinkText 1s steps(2, start) infinite;
 }
 
-/* Animationen */
+
 @keyframes rotateWidget {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -2532,10 +2532,10 @@ body.dark-mode .cloud {
     to { visibility: hidden; }
 }
 
-/* --- DARK MODE ANPASSUNG --- */
+
 body.dark-mode .ring-outer { border-color: #444; }
 
-/* Im Dark Mode muss der Text hell sein, damit man ihn sieht */
+
 body.dark-mode .tech-label { color: #f1f5f9; } 
 
 body.dark-mode .ring-inner { border-top-color: #00eaff; border-bottom-color: #00eaff; }

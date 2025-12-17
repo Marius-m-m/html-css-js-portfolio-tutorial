@@ -415,7 +415,6 @@ const flowerHTML = `
       <div class="grow-ans" style="--d:3.6s"><div class="leaf leaf--3"></div></div>
     </div>
 `;
-// --- NEUER MECH HUD WIDGET CODE ---
 const mercuryHTML = `
   <div id="mech-widget">
     <div class="ring-outer"></div>
@@ -582,12 +581,7 @@ function populateProjectPage(id) {
     if (typeof initPanzoom === 'function') {
         setTimeout(initPanzoom, 100);
     }
-    // ... existierender Code ...
 
-  // FLOWER INJECTION LOGIC
-// --- HIER DIE LOGIK EINFÜGEN ---
-  
-  // 1. Container suchen oder erstellen
   let animContainer = document.getElementById('flower-container');
   if (!animContainer) {
     animContainer = document.createElement('div');
@@ -595,17 +589,15 @@ function populateProjectPage(id) {
     document.body.appendChild(animContainer);
   }
 
-  // 2. Container leeren und resetten
   animContainer.innerHTML = '';
   animContainer.classList.remove('active');
 
-  // 3. Je nach Projekt den richtigen Code einfügen
   if (id === 'float') {
-    animContainer.innerHTML = flowerHTML; // Nutzt die Blumen & Wolken Variable
+    animContainer.innerHTML = flowerHTML; 
     animContainer.classList.add('active');
   } 
   else if (id === 'Mercury') {
-    animContainer.innerHTML = mercuryHTML; // Nutzt die neue Widget Variable
+    animContainer.innerHTML = mercuryHTML; 
     animContainer.classList.add('active');
   }
   }

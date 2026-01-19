@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
 
 * {
   margin: 0;
@@ -13,7 +13,9 @@ body {
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     min-height: 100vh;
-    overflow-x: hidden;
+    width: 100%;       
+    overflow-x: hidden; 
+    position: relative; 
 }
 
 @keyframes gradientBG {
@@ -23,7 +25,9 @@ body {
 }
 
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
+  overflow-x: hidden; 
+  width: 100%;        
 }
 
 p {
@@ -44,6 +48,9 @@ nav {
   margin: 0 auto;
   padding: 0 2rem;
   width: 100%;
+  position: relative; 
+  z-index: 9999;     
+  background: transparent;
 }
 
 .nav-links {
@@ -144,6 +151,11 @@ section {
   width: 100%;
   min-height: auto;
   height: fit-content;
+}
+
+#projects, #contact, #AboutMe {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
 }
 
 .title {
@@ -276,6 +288,7 @@ section {
   min-width: 280px;
   max-width: 400px;
   transition: transform 0.3s ease;
+  will-change: transform; 
 }
 
 .details-container:hover {
@@ -297,6 +310,8 @@ section {
   object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease;
+  /* Performance */
+  will-change: transform;
 }
 
 .project-img:hover {
@@ -488,13 +503,6 @@ footer p {
 }
 
 
-nav, #desktop-nav, #hamburger-nav {
-    position: relative; 
-    z-index: 9999;     
-    background: transparent;
-}
-
-
 .nav-links li a {
     position: relative;
     z-index: 10000;
@@ -505,6 +513,12 @@ nav, #desktop-nav, #hamburger-nav {
     z-index: 10;
     position: relative;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(50px); 
+  transition: all 0.8s ease;   
+}
+
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
@@ -522,6 +536,7 @@ html {
     border-top: 1px solid rgba(255, 255, 255, 0.5);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     margin-bottom: 2rem;
+    contain: content;
 }
 
 .slider {
@@ -535,6 +550,7 @@ html {
     display: flex;
     width: calc(150px * 16); 
     animation: scroll 30s linear infinite; 
+    will-change: transform;
 }
 
 .slide {
@@ -553,6 +569,7 @@ html {
     filter: grayscale(0%) opacity(1); 
     transition: all 0.3s ease;
     cursor: pointer;
+    will-change: transform;
 }
 
 .slide img:hover {
@@ -573,6 +590,7 @@ html {
     background: linear-gradient(to right, #3b82f6, #8b5cf6);
     z-index: 10001; 
     transition: width 0.1s;
+    will-change: width;
 }
 .glitch-hover {
     position: relative;
@@ -1228,7 +1246,21 @@ body.dark-mode #project-background-canvas {
     opacity: 0.4;
 }
 
-/* --- FLOAT FLOWER ANIMATION STYLES --- */
+#flower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    perspective: 1000px;
+    display: none;
+    
+    content-visibility: auto;
+}
+
 
 #flower-container {
     position: fixed;

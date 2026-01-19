@@ -428,24 +428,20 @@ const mercuryHTML = `
 function populateProjectPage(id) {
   const data = projectDataPage[id];
   const titleEl = document.getElementById('project-title');
-  const trailerEl = document.getElementById('project-trailer');
-  
+  const trailerContainer = document.getElementById('trailer-container');
   const imagesEl = document.querySelector('.modal-images');
   const textEl = document.querySelector('.modal-text');
-  
   const galleryImagesEl = document.querySelector('.gallery-images');
   const achievementsContainer = document.querySelector('.achievements-list');
   const achievementsSection = document.getElementById('achievements-section');
 
   if (!data) {
-    titleEl.textContent = 'Project not found';
-    textEl.innerHTML = '<p>No details available for this project.</p>';
+    if(titleEl) titleEl.textContent = 'Project not found';
+    if(textEl) textEl.innerHTML = '<p>No details available for this project.</p>';
     return;
   }
 
-  titleEl.textContent = data.title;
-  
-  const trailerContainer = document.getElementById('trailer-container');
+  if(titleEl) titleEl.textContent = data.title;
   
   if (trailerContainer) {
     trailerContainer.innerHTML = ''; 
@@ -456,131 +452,133 @@ function populateProjectPage(id) {
         video.src = data.trailerUrl;
         video.controls = true; 
         video.autoplay = false; 
-        
+        video.preload = "metadata"; 
         trailerContainer.appendChild(video);
       } 
       else {
         const videoId = extractYouTubeId(data.trailerUrl);
         if (videoId) {
           const iframe = document.createElement('iframe');
+          iframe.loading = "lazy";
           iframe.src = `https://www.youtube.com/embed/${videoId}`;
           iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
           iframe.allowFullscreen = true;
-          
           trailerContainer.appendChild(iframe);
         }
       }
     }
   }
 
-  imagesEl.innerHTML = '';
-  (data.images || []).forEach((src) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = data.title;
-    imagesEl.appendChild(img);
-  });
-  
-  textEl.innerHTML = data.text || '';
-
-
-  galleryImagesEl.innerHTML = '';
-
-  if (id === 'float') {
-    galleryImagesEl.className = 'gallery-images float-grid-mode';
-  } else {
-    galleryImagesEl.className = 'gallery-images'; 
-  }
-  if (data.gallery && data.gallery.length > 0) {
-    data.gallery.forEach(item => {
-      const itemContainer = document.createElement('div');
-      itemContainer.className = 'gallery-item';
-
-      if (item.src.endsWith('.mp4')) {
-        const video = document.createElement('video');
-        video.src = item.src;
-        
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;     
-        video.playsInline = true; 
-        video.controls = true;  
-        
-        itemContainer.appendChild(video);
-      } 
-
-      else if (item.isBlueprint) {
-        const iframeContainer = document.createElement('div');
-        iframeContainer.style.cssText = `
-            width: 100%; height: 500px; border-radius: 12px; overflow: hidden; 
-            border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.1); background: #212121;
-        `;
-        const iframe = document.createElement('iframe');
-        iframe.src = item.src;
-        iframe.style.cssText = "width: 100%; height: 100%; border: none;";
-        iframe.scrolling = "no"; 
-        iframe.allowFullscreen = true;
-        iframeContainer.appendChild(iframe);
-        itemContainer.appendChild(iframeContainer);
-
-      } else if (item.isZoomable) {
-         const img = document.createElement('img');
-         img.src = item.src;
-         img.alt = "Zoomable Image";
-         itemContainer.appendChild(img);
-      } else {
+  if(imagesEl) {
+      imagesEl.innerHTML = '';
+      (data.images || []).forEach((src) => {
         const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = "Gallery Image";
-        itemContainer.appendChild(img);
-      }
-
-      if (item.caption) {
-        const caption = document.createElement('p');
-        caption.textContent = item.caption;
-        caption.style.marginTop = "1rem";
-        itemContainer.appendChild(caption);
-      }
-      galleryImagesEl.appendChild(itemContainer);
-    });
-  } else {
-    galleryImagesEl.innerHTML = '<p>No gallery images available.</p>';
+        img.src = src;
+        img.alt = data.title;
+        img.loading = "lazy";
+        img.decoding = "async";
+        imagesEl.appendChild(img);
+      });
   }
+  
+  if(textEl) textEl.innerHTML = data.text || '';
+
+  if(galleryImagesEl) {
+      galleryImagesEl.innerHTML = '';
+
+      if (id === 'float') {
+        galleryImagesEl.className = 'gallery-images float-grid-mode';
+      } else {
+        galleryImagesEl.className = 'gallery-images'; 
+      }
+      if (data.gallery && data.gallery.length > 0) {
+        data.gallery.forEach(item => {
+          const itemContainer = document.createElement('div');
+          itemContainer.className = 'gallery-item';
+
+          if (item.src.endsWith('.mp4')) {
+            const video = document.createElement('video');
+            video.src = item.src;
+            video.autoplay = true;
+            video.loop = true;
+            video.muted = true;     
+            video.playsInline = true; 
+            video.controls = true;  
+            video.loading = "lazy";
+            itemContainer.appendChild(video);
+          } 
+          else if (item.isBlueprint) {
+            const iframeContainer = document.createElement('div');
+            iframeContainer.style.cssText = `
+                width: 100%; height: 500px; border-radius: 12px; overflow: hidden; 
+                border: 1px solid rgba(255,255,255,0.2);
+                box-shadow: 0 4px 30px rgba(0,0,0,0.1); background: #212121;
+            `;
+            const iframe = document.createElement('iframe');
+            iframe.src = item.src;
+            iframe.loading = "lazy"; 
+            iframe.style.cssText = "width: 100%; height: 100%; border: none;";
+            iframe.scrolling = "no"; 
+            iframe.allowFullscreen = true;
+            iframeContainer.appendChild(iframe);
+            itemContainer.appendChild(iframeContainer);
+
+          } else if (item.isZoomable) {
+             const img = document.createElement('img');
+             img.src = item.src;
+             img.alt = "Zoomable Image";
+             img.loading = "lazy";
+             img.decoding = "async";
+             itemContainer.appendChild(img);
+          } else {
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = "Gallery Image";
+            img.loading = "lazy"; 
+            img.decoding = "async";
+            itemContainer.appendChild(img);
+          }
+
+          if (item.caption) {
+            const caption = document.createElement('p');
+            caption.textContent = item.caption;
+            caption.style.marginTop = "1rem";
+            itemContainer.appendChild(caption);
+          }
+          galleryImagesEl.appendChild(itemContainer);
+        });
+      } else {
+        galleryImagesEl.innerHTML = '<p>No gallery images available.</p>';
+      }
+  }
+
 
   if (achievementsContainer && achievementsSection) {
-    achievementsContainer.innerHTML = '';
-    
-    if (data.achievements && data.achievements.length > 0) {
-      data.achievements.forEach(ach => {
-        const li = document.createElement('li');
-        
-        if (typeof ach === 'object' && ach.link) {
-            const link = document.createElement('a');
-            link.href = ach.link;
-            link.target = "_blank"; 
-            link.textContent = ach.text;
-            link.className = "achievement-link"; 
-            li.appendChild(link);
-        } 
-        else if (typeof ach === 'object') {
-            li.textContent = ach.text;
-        }
 
-        else {
-            li.textContent = ach;
-        }
-        
-        achievementsContainer.appendChild(li);
-      });
-      achievementsSection.style.display = 'block';
-    } else {
-      achievementsSection.style.display = 'none';
-    }
-    
-    if (typeof initPanzoom === 'function') {
-        setTimeout(initPanzoom, 100);
-    }
+     achievementsContainer.innerHTML = '';
+     if (data.achievements && data.achievements.length > 0) {
+        data.achievements.forEach(ach => {
+            const li = document.createElement('li');
+            if (typeof ach === 'object' && ach.link) {
+                const link = document.createElement('a');
+                link.href = ach.link;
+                link.target = "_blank";
+                link.textContent = ach.text;
+                link.className = "achievement-link";
+                li.appendChild(link);
+            } else if (typeof ach === 'object') {
+                li.textContent = ach.text;
+            } else {
+                li.textContent = ach;
+            }
+            achievementsContainer.appendChild(li);
+        });
+        achievementsSection.style.display = 'block';
+     } else {
+        achievementsSection.style.display = 'none';
+     }
+  }
+
 
   let animContainer = document.getElementById('flower-container');
   if (!animContainer) {
@@ -600,8 +598,12 @@ function populateProjectPage(id) {
     animContainer.innerHTML = mercuryHTML; 
     animContainer.classList.add('active');
   }
+  
+  if (typeof initPanzoom === 'function') {
+        setTimeout(initPanzoom, 100);
   }
-  }
+}
+
 
 function initPanzoom() {
   const elem = document.getElementById('bt-image');

@@ -483,7 +483,7 @@ function populateProjectPage(id) {
   
   if(textEl) textEl.innerHTML = data.text || '';
 
-  if(galleryImagesEl) {
+if(galleryImagesEl) {
       galleryImagesEl.innerHTML = '';
 
       if (id === 'float') {
@@ -491,12 +491,15 @@ function populateProjectPage(id) {
       } else {
         galleryImagesEl.className = 'gallery-images'; 
       }
+      
       if (data.gallery && data.gallery.length > 0) {
         data.gallery.forEach(item => {
           const itemContainer = document.createElement('div');
           itemContainer.className = 'gallery-item';
 
+          // --- FALL 1: VIDEO (MP4) ---
           if (item.src.endsWith('.mp4')) {
+            // Das Video für den Browser
             const video = document.createElement('video');
             video.src = item.src;
             video.autoplay = true;
@@ -504,11 +507,32 @@ function populateProjectPage(id) {
             video.muted = true;     
             video.playsInline = true; 
             video.controls = true;  
-            video.loading = "lazy";
+            video.className = "no-print-video"; // Wird gedruckt ausgeblendet
             itemContainer.appendChild(video);
+
+            // Das BILD für den Druck (Automatischer Name)
+            const printImg = document.createElement('img');
+            // Versuch 1: Nimm den Namen des Videos und tausche .mp4 gegen .jpg
+            // Beispiel: assets/Walk.mp4 -> assets/Walk.jpg
+            const jpgName = item.src.replace('.mp4', '.jpg');
+            
+            printImg.src = jpgName; 
+            printImg.className = "print-thumbnail"; // Wird nur gedruckt gezeigt
+            printImg.style.display = "none"; // Im Web versteckt
+            printImg.alt = "Video Screenshot";
+            
+            // Falls das Bild nicht existiert, zeigen wir das Standard-Projektbild als Fallback
+            printImg.onerror = function() {
+                this.src = data.images[0]; 
+            };
+
+            itemContainer.appendChild(printImg);
           } 
+          // --- FALL 2: BLUEPRINT (Unreal) ---
           else if (item.isBlueprint) {
             const iframeContainer = document.createElement('div');
+            // Wichtig: Klasse für CSS Ausnahme hinzufügen
+            iframeContainer.className = "blueprint-container"; 
             iframeContainer.style.cssText = `
                 width: 100%; height: 500px; border-radius: 12px; overflow: hidden; 
                 border: 1px solid rgba(255,255,255,0.2);
@@ -522,27 +546,25 @@ function populateProjectPage(id) {
             iframe.allowFullscreen = true;
             iframeContainer.appendChild(iframe);
             itemContainer.appendChild(iframeContainer);
+            
+            // HINWEIS: BlueprintUE.com rendert oft leer im PDF.
+            // Falls der Druck leer ist, füge hier optional auch ein Fallback-Bild hinzu wie beim Video.
 
-          } else if (item.isZoomable) {
-             const img = document.createElement('img');
-             img.src = item.src;
-             img.alt = "Zoomable Image";
-             img.loading = "lazy";
-             img.decoding = "async";
-             itemContainer.appendChild(img);
-          } else {
+          } 
+          // --- FALL 3: NORMALE BILDER ---
+          else {
             const img = document.createElement('img');
             img.src = item.src;
             img.alt = "Gallery Image";
             img.loading = "lazy"; 
-            img.decoding = "async";
             itemContainer.appendChild(img);
           }
 
           if (item.caption) {
             const caption = document.createElement('p');
             caption.textContent = item.caption;
-            caption.style.marginTop = "1rem";
+            caption.style.marginTop = "0.5rem";
+            caption.style.fontSize = "0.9rem";
             itemContainer.appendChild(caption);
           }
           galleryImagesEl.appendChild(itemContainer);

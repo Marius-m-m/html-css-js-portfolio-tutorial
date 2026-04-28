@@ -2571,3 +2571,133 @@ body.dark-mode .ring-outer { border-color: #444; }
 body.dark-mode .tech-label { color: #f1f5f9; } 
 
 body.dark-mode .ring-inner { border-top-color: #00eaff; border-bottom-color: #00eaff; }
+
+/* --- FINAL PRINT STYLESHEET (style.css ganz unten) --- */
+@media print {
+  /* -----------------------------------------------------------
+     1. GLOBAL RESET & FARBEN
+  ----------------------------------------------------------- */
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    position: static !important; /* Zwingt alles in den Fluss */
+  }
+
+  html, body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    font-size: 11pt !important;
+    overflow: visible !important;
+  }
+
+  /* -----------------------------------------------------------
+     2. MAIN PAGE FIXES (index.html)
+  ----------------------------------------------------------- */
+  /* Profildaten kompakt darstellen */
+  #profile, #projects, #AboutMe, #contact {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Das Profilbild und Text nebeneinander zwingen oder sauber untereinander */
+  .section__pic-container {
+    display: block !important;
+    height: 200px !important; /* Kleiner machen */
+    width: 200px !important;
+    margin: 0 auto 20px auto !important;
+  }
+  
+  .section__text {
+    text-align: left !important;
+  }
+
+  /* Projekt-Karten auf der Startseite: Sauber untereinander */
+  .about-containers {
+    display: block !important;
+    margin-top: 20px !important;
+  }
+  
+  .details-container {
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+
+  /* -----------------------------------------------------------
+     3. PROJECT PAGE FIXES
+  ----------------------------------------------------------- */
+  /* Überschriften schwarz erzwingen */
+  .title, h1, h2, h3, p, a, span {
+    color: #000 !important;
+    -webkit-text-fill-color: #000 !important;
+    background: none !important;
+  }
+
+  /* Galerie-Bilder nebeneinander */
+  .gallery-images {
+    display: block !important;
+  }
+  
+  .gallery-item {
+    display: inline-block !important;
+    width: 45% !important;
+    vertical-align: top !important;
+    margin: 0 2% 20px 0 !important;
+    border: 1px solid #eee;
+    padding: 5px;
+    page-break-inside: avoid;
+  }
+
+  /* -----------------------------------------------------------
+     4. VIDEO & BLUEPRINT LOGIK
+  ----------------------------------------------------------- */
+  /* Videos verstecken wir, dafür zeigen wir das .print-thumbnail (siehe JS) */
+  video, .no-print-video {
+    display: none !important;
+  }
+
+  .print-thumbnail {
+    display: block !important;
+    max-width: 100% !important;
+    border: 1px solid #000;
+  }
+  
+  /* Blueprints: Erlauben! */
+  .blueprint-container iframe {
+    display: block !important;
+    width: 100% !important;
+    height: 400px !important;
+    border: 1px solid #000 !important;
+    page-break-inside: avoid;
+  }
+  
+  /* YouTube Container verstecken */
+  .trailer-container iframe {
+    display: none !important;
+  }
+
+  /* -----------------------------------------------------------
+     5. AUSBLENDEN (Navigation, Buttons, Deko)
+  ----------------------------------------------------------- */
+  nav, .btn-container, footer, #theme-toggle, 
+  .hamburger-menu, #scroll-progress, #shader-toast, 
+  #clouds, #flower-container, #mech-widget, #project-background-canvas,
+  .arrow, .icon
+  {
+    display: none !important;
+  }
+}

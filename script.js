@@ -1,29 +1,26 @@
-
 function toggleTheme() {
-  const body = document.body;
-  body.classList.toggle("dark-mode");
-
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
 }
 
 function loadTheme() {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
-  }
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
 }
 loadTheme();
 
-
 function toggleMenu() {
-  const menu = document.querySelector(".menu-links");
-  const icon = document.querySelector(".hamburger-icon");
-  menu.classList.toggle("open");
-  icon.classList.toggle("open");
+    const menu = document.querySelector(".menu-links");
+    const icon = document.querySelector(".hamburger-icon");
+    menu.classList.toggle("open");
+    icon.classList.toggle("open");
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -31,7 +28,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault(); 
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-
         if (targetElement) {
             targetElement.scrollIntoView({
                 behavior: 'smooth',
@@ -46,7 +42,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-
 
 let isScrolling = false;
 const reveals = document.querySelectorAll(".reveal");
@@ -70,7 +65,6 @@ function onScrollOptimized() {
                 const scrolled = (scrollTop / scrollHeight) * 100;
                 progressBar.style.width = scrolled + "%";
             }
-
             isScrolling = false;
         });
         isScrolling = true;

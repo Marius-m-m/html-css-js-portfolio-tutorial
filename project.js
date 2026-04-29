@@ -126,7 +126,12 @@ const projectDataPage = {
             { src: "https://blueprintue.com/render/435xr683/", caption: "Modular Health & Damage Component Tech: A universal Actor Component designed for high reusability. Decouples damage logic from specific classes, allowing any actor to process health events and destruction simply by attaching this component.", isBlueprint: true }
         ],
         achievements: [
-            { text: "Participant: Meta Horizon Start Developer Competition", link: "https://devpost.com/software/mercury-05i6ty?ref_content=my-projects-tab&ref_feature=my_projects" }
+            { text: "Participant: Meta Horizon Start Developer Competition", link: "https://devpost.com/software/mercury-05i6ty?ref_content=my-projects-tab&ref_feature=my_projects" },
+            { text: "Exhibitor: GG Bavaria 26 ", link: "https://ggbavaria.games-bavaria.com/universitaeten-hochschulen-und-institutionen-2026/" },
+            { text: "Winner: HNU Werkschau | Best Mechanics-Award", link: "https://www.hnu.de/alle-news/detail/2026/03/4/studierende-praesentieren-serious-games-fuer-menschen-mit-erworbener-hirnschaedigung-bei-der-hnu-werkschau?cHash=1c42bbafea8b0536cf8dd75c28fb1105" },
+            { text: "Exhibitor: HNU Werkschau 2026" },
+            { text: "Entry: Auggie Awards 2026" },
+            { text: "Entry: Laval Virtual 2026"}
         ]
     }
 };

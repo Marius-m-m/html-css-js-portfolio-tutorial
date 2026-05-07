@@ -7,7 +7,6 @@
     flex-wrap: wrap;
   }
   #contact,
-  #about,
   #projects {
     height: fit-content;
   }

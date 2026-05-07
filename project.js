@@ -23,7 +23,7 @@ const projectDataPage = {
             </div>
             <div class="project-context-section">
                 <h3>FLOAT</h3>
-                <p>FLOAT utilizes VR Hand Tracking for immersive puzzle gameplay to gather medical data. By wearing the Myomod bracelet during play, users generate muscle data without extra effort, directly contributing to the development of better arm prosthetics.</p>
+                <p>FLOAT is a controller-free mixed reality experience that combines immersive gaming with medical research. Players use intuitive hand gestures to solve puzzles and restore a fragmented world, while the game anonymously collects movement data to train AI for affordable myoelectric prosthetics.</p>
             </div>
         `,
         images: ["./assets/project-1.1.jpg"], 
@@ -93,7 +93,7 @@ const projectDataPage = {
                 <div class="meta-column">
                     <h3>Project Scope</h3>
                     <ul>
-                        <li>- Under Development </li>
+                        <li>- 3 Months </li>
                         <li>- Team of 6 People</li>
                         <li>- Unreal Engine 5</li>
                     </ul>
@@ -109,7 +109,7 @@ const projectDataPage = {
             </div>
             <div class="project-context-section">
                 <h3>MERCURY</h3>
-                <p>MERCURY is a high-octane VR Mecha Brawler designed exclusively for hand tracking. It stands as the first game of its kind, allowing players to pilot a giant mech using intuitive physical gestures. The project focuses on immersive, fast-paced close-quarters combat without the need for controllers.</p>
+                <p>Mercury is the first controller-free VR mecha brawler that utilizes pure hand-tracking for high-speed combat and movement. Players master gesture-based 'Gorilla-Locomotion' to navigate procedurally generated cities and dismantle enemy mechs.</p>
             </div>
             <div style="margin-top: 2rem;">
                 <h3 style="margin-bottom: 0.5rem;">AI Behavior Tree Logic</h3>

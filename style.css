@@ -1546,3 +1546,15 @@ body.dark-mode .ring-inner { border-top-color: #00eaff; border-bottom-color: #00
         display: none !important;
     }
 }
+
+.slide-track {
+    display: flex;
+    width: calc(150px * 14); 
+    animation: scroll 30s linear infinite; 
+    will-change: transform;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-150px * 7)); } 
+}
